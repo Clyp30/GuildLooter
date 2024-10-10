@@ -1,41 +1,77 @@
+/* Body background with creatures and gargoyles */
 body {
-    background-color: #1c1c1c;
-    color: #fff;
-    font-family: 'Arial', sans-serif;
+    background-image: url('creature-bg.png'), url('gargoyle-bg.png'); /* Replace with actual image URLs */
+    background-size: cover;
+    background-position: center, bottom;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    background-color: #1a1a1a; /* Dark background */
+    color: #b8860b; /* Dark golden color for text */
+    font-family: 'DiabloFont', serif; /* You can add a custom Diablo-inspired font */
 }
 
+/* Admin panel, user sections, and form styling */
 .admin-panel, .user-section, .real-time-ranking {
-    margin: 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark translucent background */
+    border: 2px solid #b8860b; /* Dark golden border */
     padding: 20px;
-    border: 2px solid #700;
-    background-color: #2e2e2e;
+    margin: 20px;
+    border-radius: 10px;
+    color: #b8860b; /* Dark golden text */
 }
 
-h1, h2, h3 {
-    color: #ff0000;
-}
-
-button {
-    background-color: #700;
-    color: #fff;
-    border: none;
+/* Form input fields */
+input, select, button {
+    background-color: #333; /* Dark input background */
+    color: #b8860b; /* Dark golden text */
+    border: 2px solid #b8860b;
     padding: 10px;
-    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
 }
 
+/* Hover and active button effects */
 button:hover {
-    background-color: #ff0000;
+    background-color: #444; /* Darker hover effect */
+    color: #ffcc00; /* Brighter gold on hover */
 }
 
-input, select {
-    margin-bottom: 10px;
-    padding: 5px;
-    background-color: #333;
-    color: #fff;
+/* Ranking list items */
+#ranking-list li {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #ffcc00; /* Bright golden for ranking items */
 }
 
-#item-list, #ranking-list {
-    background-color: #2e2e2e;
-    border: 1px solid #700;
+/* Diablo 2-themed footer or additional sections */
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-top: 2px solid #b8860b;
     padding: 10px;
+    color: #b8860b;
+    text-align: center;
+}
+
+/* Make sure the creatures have low opacity for subtle background effect */
+.creature-bg, .gargoyle-bg {
+    opacity: 0.1; /* Low opacity for subtle effect */
+}
+
+/* Font styles */
+h1, h2, h3 {
+    font-size: 2em;
+    color: #ffcc00; /* Bright golden for headers */
+}
+
+p, label {
+    color: #b8860b;
+}
+
+/* Admin hidden panel */
+#admin-panel {
+    display: none; /* Hidden by default */
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid #b8860b;
+    padding: 20px;
+    border-radius: 10px;
 }
