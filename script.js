@@ -60,4 +60,26 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
     const reputation = parseInt(document.getElementById('reputation').value);
     const use = document.getElementById('use').value;
 
-    // Calculate total reputation based on the use
+    // Calculate total reputation based on the use of the item
+    let totalReputation = reputation;
+    switch (use) {
+        case 'equip':
+            totalReputation += 3000;
+            break;
+        case 'trait':
+            totalReputation += 2000;
+            break;
+        case 'copy':
+            totalReputation += 1000;
+            break;
+        case 'lithograph':
+            totalReputation += 500;
+            break;
+    }
+
+    // Add user request to the ranking list
+    const rankingList = document.getElementById('ranking-list');
+    const listItem = document.createElement('li');
+    listItem.textContent = `User: ${weapons.join(', ')} | Reputation: ${totalReputation}`;
+    rankingList.appendChild(listItem);
+});
