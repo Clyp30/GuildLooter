@@ -34,8 +34,25 @@
         </div>
     </div>
 
+    <!-- Admin Login Button -->
     <button id="admin-access-btn">Admin Login</button>
 
     <!-- Hidden Admin Panel -->
     <div class="admin-panel" id="admin-panel" style="display:none;">
-        <h
+        <h1>Admin Panel</h1>
+
+        <!-- Left Sidebar for Category Selection -->
+        <div id="sidebar">
+            <button class="category-btn" data-category="weapons">Weapons</button>
+            <button class="category-btn" data-category="armor">Armor</button>
+            <button class="category-btn" data-category="accessories">Accessories</button>
+
+            <div id="item-list" style="display:none;">
+                <!-- Item buttons will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Middle Section for Item Details -->
+        <div id="middle-section">
+            <div id="rarity-options" style="display:none;">
+                <button class="rarity-btn" data-rarity="rare
