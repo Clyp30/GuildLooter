@@ -1,68 +1,112 @@
-let items = [];
-let requests = [];
-
-// Admin adding items
-document.getElementById("add-item").addEventListener("click", function() {
-    let itemName = document.getElementById("item-name").value;
-    let itemType = document.getElementById("item-type").value;
-    
-    if(itemName && itemType) {
-        items.push({name: itemName, type: itemType});
-        updateItemList();
-        document.getElementById("item-name").value = "";
-    }
-});
-
-function updateItemList() {
-    let itemSelection = document.getElementById("item-selection");
-    let itemList = document.getElementById("item-list");
-    
-    itemSelection.innerHTML = '';
-    itemList.innerHTML = '';
-
-    items.forEach((item, index) => {
-        let option = document.createElement("option");
-        option.value = index;
-        option.textContent = `${item.name} (${item.type})`;
-        itemSelection.appendChild(option);
-
-        let itemDiv = document.createElement("div");
-        itemDiv.textContent = `${item.name} (${item.type})`;
-        itemList.appendChild(itemDiv);
-    });
+/* Body background with creatures and gargoyles */
+body {
+    background-image: url('creature-bg.png'), url('gargoyle-bg.png'); /* Replace with actual image URLs */
+    background-size: cover;
+    background-position: center, bottom;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
+    background-color: #1a1a1a; /* Dark background */
+    color: #b8860b; /* Dark golden color for text */
+    font-family: 'DiabloFont', serif; /* Optional: Custom Diablo-inspired font */
 }
 
-// User submitting requests
-document.getElementById("submit-request").addEventListener("click", function() {
-    let selectedItem = document.getElementById("item-selection").value;
-    let reputation = parseInt(document.getElementById("reputation").value);
-    let purpose = document.getElementById("purpose").value;
+/* User Section */
+.user-section {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid #b8860b;
+    padding: 20px;
+    border-radius: 10px;
+}
 
-    let bonusReputation = 0;
-    if (purpose === "equip") bonusReputation = 3000;
-    else if (purpose === "trait") bonusReputation = 2000;
-    else if (purpose === "copy") bonusReputation = 1000;
-    else if (purpose === "lithograph") bonusReputation = 500;
+/* Admin Panel Styles */
+.admin-panel {
+    display: none; /* Hidden by default */
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid #b8860b;
+    padding: 20px;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    z-index: 1000;
+    color: #b8860b; /* Dark golden text */
+}
 
-    let finalReputation = reputation + bonusReputation;
+/* Sidebar Styles */
+#sidebar {
+    width: 20%;
+    float: left;
+}
 
-    requests.push({
-        item: selectedItem,
-        reputation: finalReputation
-    });
+.category-btn {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #444;
+    color: #b8860b;
+    border: 2px solid #b8860b;
+    cursor: pointer;
+}
 
-    updateRanking();
-});
+/* Middle Section Styles */
+#middle-section {
+    float: left;
+    width: 70%;
+    padding: 20px;
+}
 
-function updateRanking() {
-    let rankingList = document.getElementById("ranking-list");
-    rankingList.innerHTML = '';
+/* Search Container */
+#search-container {
+    text-align: right;
+    margin-bottom: 10px;
+}
 
-    requests.sort((a, b) => b.reputation - a.reputation);
+#search-bar {
+    padding: 10px;
+    border: 2px solid #b8860b;
+    color: #b8860b;
+    background-color: #333;
+}
 
-    requests.forEach((request, index) => {
-        let li = document.createElement("li");
-        li.textContent = `User ${index + 1}: Item ${items[request.item].name}, Reputation: ${request.reputation}`;
-        rankingList.appendChild(li);
-    });
+/* Rarity Buttons */
+.rarity-btn {
+    padding: 10px;
+    margin: 5px;
+    color: white;
+}
+
+.rarity-btn[data-rarity="rare"] {
+    background-color: blue; /* Blue for Rare */
+}
+
+.rarity-btn[data-rarity="epic"] {
+    background-color: purple; /* Purple for Epic */
+}
+
+/* Real-time Ranking Styles */
+.real-time-ranking {
+    margin-top: 20px;
+}
+
+/* Ranking list items */
+#ranking-list li {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #ffcc00; /* Bright golden for ranking items */
+}
+
+/* Button hover effects */
+button:hover {
+    background-color: #444; /* Darker hover effect */
+    color: #ffcc00; /* Brighter gold on hover */
+}
+
+/* Clearfix for float */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
