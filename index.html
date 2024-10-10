@@ -1,65 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item Distribution</title>
-    <!-- Link to the CSS file -->
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="admin-panel">
-        <h1>Admin Panel</h1>
-        <form id="admin-form">
-            <label for="item-name">Item Name:</label>
-            <input type="text" id="item-name" placeholder="Enter item name"><br>
-            <label>Select Item Type:</label>
-            <select id="item-type">
-                <option value="weapon">Weapon</option>
-                <option value="armor">Armor</option>
-                <option value="ring">Ring</option>
-            </select><br>
-            <button type="button" id="add-item">Add Item</button>
-        </form>
+<!-- Admin Access Button -->
+<button id="admin-access-btn">Admin Login</button>
+
+<!-- Hidden Admin Panel -->
+<div class="admin-panel" id="admin-panel" style="display:none;">
+    <h1>Admin Panel</h1>
+
+    <!-- Left Sidebar for Category Selection -->
+    <div id="sidebar">
+        <button class="category-btn" data-category="weapons">Weapons</button>
+        <button class="category-btn" data-category="armor">Armor</button>
+        <button class="category-btn" data-category="accessories">Accessories</button>
+
+        <div id="item-list" style="display:none;">
+            <!-- Item buttons will be dynamically added here -->
+        </div>
     </div>
 
-    <div class="user-section">
-        <h2>Item Listing</h2>
-        <div id="item-list"></div>
-
-        <h3>Request an Item</h3>
-        <form id="user-request-form">
-            <label>Select an item:</label>
-            <select id="item-selection"></select><br>
-
-            <label>Select weapons of use:</label><br>
-            <input type="checkbox" name="weapon" value="Staff">Staff
-            <input type="checkbox" name="weapon" value="Daggers">Daggers
-            <input type="checkbox" name="weapon" value="Xbox">Xbox
-            <input type="checkbox" name="weapon" value="Longbow">Longbow
-            <!-- Add remaining weapon options -->
-
-            <label>Enter Reputation:</label>
-            <input type="number" id="reputation" placeholder="Reputation"><br>
-
-            <label>Purpose for the item:</label>
-            <select id="purpose">
-                <option value="equip">Equip</option>
-                <option value="trait">Trait</option>
-                <option value="copy">Copy</option>
-                <option value="lithograph">Lithograph</option>
-            </select><br>
-
-            <button type="button" id="submit-request">Submit Request</button>
-        </form>
+    <!-- Middle Section for Item Details -->
+    <div id="middle-section">
+        <div id="rarity-options" style="display:none;">
+            <button class="rarity-btn" data-rarity="rare">Rare</button>
+            <button class="rarity-btn" data-rarity="epic">Epic</button>
+        </div>
     </div>
 
-    <div class="real-time-ranking">
-        <h3>Real-Time Ranking</h3>
-        <ul id="ranking-list"></ul>
+    <!-- Top Right Search Bar -->
+    <div id="search-container">
+        <input type="text" id="search-bar" placeholder="Search for items..." />
     </div>
-
-    <!-- Link to the JavaScript file -->
-    <script src="script.js"></script>
-</body>
-</html>
+</div>
