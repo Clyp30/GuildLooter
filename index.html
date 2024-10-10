@@ -3,87 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guild Loot Distribution</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Guild Loot Distribution</title>
 </head>
 <body>
-    <h1>Guild Loot Distribution</h1>
-    
-    <div class="user-section">
-        <h2>User Section</h2>
-        <form id="user-form">
-            <label for="username">In-Game Name:</label>
-            <input type="text" id="username" placeholder="Enter your in-game name" required>
-            <label for="build">Select Build:</label>
-            <div class="build-icons">
-                <img src="icons/staff.png" alt="Staff" class="build-icon" data-build="Staff">
-                <img src="icons/daggers.png" alt="Daggers" class="build-icon" data-build="Daggers">
-                <img src="icons/xbox.png" alt="Xbox" class="build-icon" data-build="Xbox">
-                <img src="icons/longbow.png" alt="Longbow" class="build-icon" data-build="Longbow">
-                <img src="icons/wand.png" alt="Wand" class="build-icon" data-build="Wand">
-                <img src="icons/greatsword.png" alt="Greatsword" class="build-icon" data-build="Greatsword">
-                <img src="icons/shield.png" alt="Shield" class="build-icon" data-build="Shield">
-                <img src="icons/sword.png" alt="Sword" class="build-icon" data-build="Sword">
-            </div>
-            <label for="reputation">Reputation:</label>
-            <input type="number" id="reputation" placeholder="Enter your reputation" required>
-            <label for="use">Use of Item:</label>
-            <select id="use">
-                <option value="equip">Equip</option>
-                <option value="trait">Trait</option>
-                <option value="copy">Copy</option>
-                <option value="lithograph">Lithograph</option>
-            </select>
-            <button type="submit">Request Item</button>
-        </form>
+    <div id="container">
+        <h1>Guild Loot Distribution</h1>
+        
+        <button id="admin-access-btn">Admin Login</button>
+        
+        <div id="user-form-container">
+            <h3>Request Item</h3>
+            <form id="user-form">
+                <input type="text" id="username" placeholder="In-Game Name" required>
+                <input type="number" id="reputation" placeholder="Reputation" required>
+                
+                <h4>Select Your Build:</h4>
+                <div id="build-selection">
+                    <div class="build-icon" data-build="Staff">
+                        <img src="images/staff-icon.png" alt="Staff">
+                    </div>
+                    <div class="build-icon" data-build="Daggers">
+                        <img src="images/daggers-icon.png" alt="Daggers">
+                    </div>
+                    <div class="build-icon" data-build="Xbox">
+                        <img src="images/xbox-icon.png" alt="Xbox">
+                    </div>
+                    <div class="build-icon" data-build="Longbow">
+                        <img src="images/longbow-icon.png" alt="Longbow">
+                    </div>
+                    <div class="build-icon" data-build="Wand">
+                        <img src="images/wand-icon.png" alt="Wand">
+                    </div>
+                    <div class="build-icon" data-build="Greatsword">
+                        <img src="images/greatsword-icon.png" alt="Greatsword">
+                    </div>
+                    <div class="build-icon" data-build="Shield">
+                        <img src="images/shield-icon.png" alt="Shield">
+                    </div>
+                    <div class="build-icon" data-build="Sword">
+                        <img src="images/sword-icon.png" alt="Sword">
+                    </div>
+                </div>
+                
+                <button type="submit">Submit Request</button>
+            </form>
+        </div>
 
-        <div class="priority-list">
+        <div id="priority-list-container">
             <h3>Priority List</h3>
-            <ul id="ranking-list">
-                <!-- Ranking list will be dynamically updated here -->
-            </ul>
-        </div>
-    </div>
-
-    <!-- Admin Login Button -->
-    <button id="admin-access-btn">Admin Login</button>
-
-    <!-- Hidden Admin Panel -->
-    <div class="admin-panel" id="admin-panel" style="display:none;">
-        <span class="close-btn" id="close-admin-panel">&times;</span>
-        <h1>Admin Panel</h1>
-
-        <!-- Left Sidebar for Category Selection -->
-        <div id="sidebar">
-            <button class="category-btn" data-category="weapons">Weapons</button>
-            <button class="category-btn" data-category="armor">Armor</button>
-            <button class="category-btn" data-category="accessories">Accessories</button>
-
-            <div id="item-list" style="display:none;">
-                <!-- Item buttons will be dynamically added here -->
+            <ul id="ranking-list"></ul>
+            <div id="countdown">
+                <h4>Countdown Timer: <span id="timer">12:00:00</span></h4>
             </div>
         </div>
 
-        <!-- Middle Section for Item Details -->
-        <div id="middle-section">
-            <div id="rarity-options" style="display:none;">
+        <div id="admin-panel" style="display: none;">
+            <button id="close-admin-panel">&times;</button>
+            <h3>Admin Panel</h3>
+            <div class="categories">
+                <button class="category-btn" data-category="weapons">Weapons</button>
+                <button class="category-btn" data-category="armor">Armor</button>
+                <button class="category-btn" data-category="accessories">Accessories</button>
+            </div>
+            <div id="item-list"></div>
+            <div id="rarity-options" style="display: none;">
+                <h4>Select Rarity:</h4>
                 <button class="rarity-btn" data-rarity="rare">Rare</button>
                 <button class="rarity-btn" data-rarity="epic">Epic</button>
+                <div id="potential-items" style="display: none;">
+                    <h4>Potential Items:</h4>
+                    <ul id="item-options-list"></ul>
+                </div>
             </div>
-            <div id="potential-items" style="display:none;">
-                <h3>Potential Items:</h3>
-                <ul id="item-options-list">
-                    <!-- Potential items will be listed here -->
-                </ul>
-            </div>
-            <div id="countdown" style="display:none;">
-                <h3>Countdown: <span id="timer">12:00:00</span></h3>
-            </div>
-        </div>
-
-        <!-- Top Right Search Bar -->
-        <div id="search-container">
-            <input type="text" id="search-bar" placeholder="Search for items..." />
         </div>
     </div>
 
