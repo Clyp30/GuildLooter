@@ -30,6 +30,10 @@ button:hover {
     margin-top: 20px;
 }
 
+.build-title {
+    font-size: 16px; /* Smaller font size */
+}
+
 .build-icon {
     display: inline-block;
     margin: 10px;
@@ -37,8 +41,8 @@ button:hover {
 }
 
 .build-icon img {
-    width: 50px; /* Set size for icons */
-    height: 50px;
+    width: 30px; /* Reduced size for icons */
+    height: 30px;
 }
 
 #item-list {
@@ -48,4 +52,10 @@ button:hover {
 
 #rarity-options {
     margin-top: 10px;
+}
+
+.timer {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FF0000; /* Red color for countdown */
 }
