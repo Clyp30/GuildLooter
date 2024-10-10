@@ -18,6 +18,23 @@ body {
     border-radius: 10px;
 }
 
+/* Build Icons */
+#build-icons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.build-icon {
+    width: 50px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.build-icon:hover {
+    border-color: #ffcc00;
+}
+
 /* Admin Panel Styles */
 .admin-panel {
     display: none; /* Hidden by default */
@@ -33,6 +50,16 @@ body {
     height: 80%;
     z-index: 1000;
     color: #b8860b; /* Dark golden text */
+}
+
+/* Close button */
+#close-admin-panel {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ff0000;
 }
 
 /* Sidebar Styles */
@@ -98,21 +125,8 @@ body {
     color: #ffcc00; /* Bright golden for ranking items */
 }
 
-/* Button hover effects */
-button:hover {
-    background-color: #444; /* Darker hover effect */
-    color: #ffcc00; /* Brighter gold on hover */
-}
-
 /* Countdown Timer Styles */
 #countdown {
     margin-top: 20px;
     color: #ff0000; /* Red color for countdown */
-}
-
-/* Clearfix for float */
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
 }
