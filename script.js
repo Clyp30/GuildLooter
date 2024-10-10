@@ -1,7 +1,7 @@
 // Admin login system
 document.getElementById('admin-access-btn').addEventListener('click', function() {
     const password = prompt('Enter Admin Password:');
-    if (password === 'adminpassword') { // Replace with your secure password
+    if (password === 'fZKaKprspCrytQuB') { // Replace with your secure password
         document.getElementById('admin-panel').style.display = 'block';
     } else {
         alert('Incorrect password!');
@@ -69,4 +69,16 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
             totalReputation += 2000;
             break;
         case 'copy':
-            total
+            totalReputation += 1000;
+            break;
+        case 'lithograph':
+            totalReputation += 500;
+            break;
+    }
+
+    // Add user request to the ranking list (for demonstration purposes)
+    const rankingList = document.getElementById('ranking-list');
+    const listItem = document.createElement('li');
+    listItem.textContent = `User: ${weapons.join(', ')} | Reputation: ${totalReputation}`;
+    rankingList.appendChild(listItem);
+});
