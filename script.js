@@ -62,6 +62,23 @@ document.getElementById('user-form').addEventListener('submit', function(event) 
     // Calculate total reputation based on the use selected
     let totalReputation = reputation;
     switch (use) {
-        case '
+        case 'equip':
+            totalReputation += 3000;
+            break;
+        case 'trait':
+            totalReputation += 2000;
+            break;
+        case 'copy':
+            totalReputation += 1000;
+            break;
+        case 'lithograph':
+            totalReputation += 500;
+            break;
+    }
 
-        
+    // Add user request to the ranking list (for demonstration purposes)
+    const rankingList = document.getElementById('ranking-list');
+    const listItem = document.createElement('li');
+    listItem.textContent = `User: ${weapons.join(', ')} | Reputation: ${totalReputation}`;
+    rankingList.appendChild(listItem);
+});
