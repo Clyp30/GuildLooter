@@ -21,12 +21,7 @@ categoryButtons.forEach(button => {
         // Load items based on category
         if (category === 'weapons') {
             itemList.innerHTML += '<button class="item-btn" data-item="greatsword">Greatsword</button>';
-            itemList.innerHTML += '<button class="item-btn" data-item="sword">Sword</button>';
-            itemList.innerHTML += '<button class="item-btn" data-item="dagger">Dagger</button>';
-            itemList.innerHTML += '<button class="item-btn" data-item="crossbow">Crossbow</button>';
-            itemList.innerHTML += '<button class="item-btn" data-item="longbow">Longbow</button>';
-            itemList.innerHTML += '<button class="item-btn" data-item="staff">Staff</button>';
-            itemList.innerHTML += '<button class="item-btn" data-item="wand">Wand</button>';
+            // Add more weapons as needed
         } else if (category === 'armor') {
             itemList.innerHTML += '<button class="item-btn" data-item="chestplate">Chestplate</button>';
             // Add more armor options as needed
@@ -45,41 +40,16 @@ itemList.addEventListener('click', function(event) {
     if (event.target.classList.contains('item-btn')) {
         const selectedItem = event.target.getAttribute('data-item');
         const rarityOptions = document.getElementById('rarity-options');
-        
+
         // Show rarity options
         rarityOptions.style.display = 'block';
-    }
-});
 
-// Form submission for user requests
-document.getElementById('user-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
+        // Populate potential items based on selected rarity
+        const itemOptionsList = document.getElementById('item-options-list');
+        itemOptionsList.innerHTML = ''; // Clear previous options
 
-    // Collect data
-    const weapons = document.getElementById('weapons').value.split(',').map(item => item.trim());
-    const reputation = parseInt(document.getElementById('reputation').value);
-    const use = document.getElementById('use').value;
-
-    // Calculate total reputation based on the use of the item
-    let totalReputation = reputation;
-    switch (use) {
-        case 'equip':
-            totalReputation += 3000;
-            break;
-        case 'trait':
-            totalReputation += 2000;
-            break;
-        case 'copy':
-            totalReputation += 1000;
-            break;
-        case 'lithograph':
-            totalReputation += 500;
-            break;
-    }
-
-    // Add user request to the ranking list
-    const rankingList = document.getElementById('ranking-list');
-    const listItem = document.createElement('li');
-    listItem.textContent = `User: ${weapons.join(', ')} | Reputation: ${totalReputation}`;
-    rankingList.appendChild(listItem);
-});
+        if (selectedItem === 'greatsword') {
+            const items = [
+                "Morokai's Greatblade of Corruption",
+                "Duke Magna's Provoking Warblade",
+                "Heroic Bro
