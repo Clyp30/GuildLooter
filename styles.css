@@ -1,37 +1,39 @@
 body {
-    background-image: url('images/diablo-background.png'); /* Replace with your background image */
+    background-color: #1B1B1B; /* Dark background color */
+    background-image: url('images/diablo-bg.png'); /* Diablo-inspired background (use a texture or low-opacity image) */
     background-size: cover;
-    color: #D6C26E; /* Dark golden color */
-    font-family: 'Arial', sans-serif;
+    color: #D4AF37; /* Muted gold color for text */
+    font-family: 'Palatino Linotype', 'Book Antiqua', serif; /* Gothic-inspired font style */
     text-align: center;
 }
 
 h1, h3, h4 {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Stronger shadow for a darker, gothic look */
 }
 
 button {
-    background-color: #8B0000; /* Blood red color */
-    color: white;
-    border: none;
+    background-color: #8B0000; /* Blood red button color */
+    color: #D4AF37; /* Muted gold for button text */
+    border: 2px solid #4A0000; /* Darker red for button borders */
     padding: 10px 15px;
     cursor: pointer;
     font-size: 16px;
 }
 
 button:hover {
-    background-color: #A00000; /* Darker red on hover */
+    background-color: #A00000; /* Slightly brighter red on hover */
 }
 
 #admin-panel {
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
-    border: 2px solid #D6C26E; /* Dark golden border */
+    background: rgba(0, 0, 0, 0.8); /* Dark, semi-transparent background for the panel */
+    border: 2px solid #D4AF37; /* Muted gold border */
     padding: 20px;
     margin-top: 20px;
 }
 
 .build-title {
-    font-size: 16px; /* Smaller font size */
+    font-size: 16px; /* Slightly smaller font size for the build title */
+    color: #D4AF37; /* Muted gold for the title */
 }
 
 .build-icon {
@@ -41,8 +43,9 @@ button:hover {
 }
 
 .build-icon img {
-    width: 30px; /* Reduced size for icons */
+    width: 30px; /* Smaller build icons */
     height: 30px;
+    filter: brightness(0.8) contrast(1.2); /* Darken and boost contrast for the icons */
 }
 
 #item-list {
@@ -52,10 +55,29 @@ button:hover {
 
 #rarity-options {
     margin-top: 10px;
+    color: #D4AF37; /* Use the gold tone for text in rarity options */
 }
 
 .timer {
     font-size: 18px;
     font-weight: bold;
     color: #FF0000; /* Red color for countdown */
+}
+
+#ranking-list li {
+    color: #D4AF37; /* Keep list items in muted gold */
+}
+
+#user-form-container, #priority-list-container {
+    background: rgba(30, 30, 30, 0.9); /* Dark, semi-transparent boxes for form and list */
+    padding: 20px;
+    border: 1px solid #4A0000; /* Dark red border */
+}
+
+h1 {
+    color: #FFD700; /* Brighter golden yellow for main header */
+}
+
+h3, h4 {
+    color: #D4AF37; /* Muted gold for smaller headers */
 }
