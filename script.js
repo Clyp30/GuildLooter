@@ -1,6 +1,5 @@
 // Admin login system
 document.getElementById('admin-access-btn').addEventListener('click', function() {
-    // Prompt for password
     const password = prompt('Enter Admin Password:');
     if (password === 'adminpassword') { // Replace with your secure password
         document.getElementById('admin-panel').style.display = 'block'; // Show the admin panel
@@ -90,28 +89,4 @@ document.getElementById('user-form').addEventListener('submit', function(e) {
 
     // Add to the ranking list
     const rankingList = document.getElementById('ranking-list');
-    rankingList.innerHTML += `<li>${username} - Reputation: ${reputation}</li>`;
-
-    // Clear form fields
-    this.reset();
-});
-
-// Countdown timer functionality
-let countdownTime = 12 * 60 * 60; // 12 hours in seconds
-const timerDisplay = document.getElementById('timer');
-const countdownDiv = document.getElementById('countdown');
-
-setInterval(() => {
-    if (countdownTime <= 0) {
-        clearInterval();
-        alert("Time's up! Selecting user with the highest reputation.");
-        // Logic to select the user with the highest reputation would go here
-    } else {
-        const hours = Math.floor(countdownTime / 3600);
-        const minutes = Math.floor((countdownTime % 3600) / 60);
-        const seconds = countdownTime % 60;
-
-        timerDisplay.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        countdownTime--;
-    }
-}, 1000);
+    rankingList.innerHTML
