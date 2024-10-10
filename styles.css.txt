@@ -1,0 +1,41 @@
+body {
+    background-color: #1c1c1c;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+.admin-panel, .user-section, .real-time-ranking {
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #700;
+    background-color: #2e2e2e;
+}
+
+h1, h2, h3 {
+    color: #ff0000;
+}
+
+button {
+    background-color: #700;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff0000;
+}
+
+input, select {
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #333;
+    color: #fff;
+}
+
+#item-list, #ranking-list {
+    background-color: #2e2e2e;
+    border: 1px solid #700;
+    padding: 10px;
+}
