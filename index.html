@@ -18,7 +18,7 @@
                 <input type="text" id="username" placeholder="In-Game Name" required>
                 <input type="number" id="reputation" placeholder="Reputation" required>
                 
-                <h4>Select Your Build:</h4>
+                <h4 class="build-title">Build:</h4>
                 <div id="build-selection">
                     <div class="build-icon" data-build="Staff">
                         <img src="images/staff-icon.png" alt="Staff">
@@ -53,9 +53,6 @@
         <div id="priority-list-container">
             <h3>Priority List</h3>
             <ul id="ranking-list"></ul>
-            <div id="countdown">
-                <h4>Countdown Timer: <span id="timer">12:00:00</span></h4>
-            </div>
         </div>
 
         <div id="admin-panel" style="display: none;">
@@ -74,6 +71,9 @@
                 <div id="potential-items" style="display: none;">
                     <h4>Potential Items:</h4>
                     <ul id="item-options-list"></ul>
+                    <div id="item-timer">
+                        <h4>Countdown Timer: <span class="timer">12:00:00</span></h4>
+                    </div>
                 </div>
             </div>
         </div>
