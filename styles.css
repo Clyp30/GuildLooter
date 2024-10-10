@@ -1,16 +1,17 @@
-/* Body background with creatures and gargoyles */
+/* Add these or update existing styles in your styles.css */
+
 body {
-    background-image: url('creature-bg.png'), url('gargoyle-bg.png'); /* Replace with actual image URLs */
+    background-image: url('creature-bg.png'), url('gargoyle-bg.png'); /* Replace with your actual image URLs */
     background-size: cover;
     background-position: center, bottom;
     background-repeat: no-repeat;
     background-blend-mode: darken;
     background-color: #1a1a1a; /* Dark background */
     color: #b8860b; /* Dark golden color for text */
-    font-family: 'DiabloFont', serif; /* You can add a custom Diablo-inspired font */
+    font-family: 'DiabloFont', serif; /* Optional: Custom Diablo-inspired font */
 }
 
-/* Admin panel, user sections, and form styling */
+/* Ensure other UI elements match the Diablo-inspired theme */
 .admin-panel, .user-section, .real-time-ranking {
     background-color: rgba(0, 0, 0, 0.7); /* Dark translucent background */
     border: 2px solid #b8860b; /* Dark golden border */
@@ -20,7 +21,6 @@ body {
     color: #b8860b; /* Dark golden text */
 }
 
-/* Form input fields */
 input, select, button {
     background-color: #333; /* Dark input background */
     color: #b8860b; /* Dark golden text */
@@ -30,34 +30,17 @@ input, select, button {
     border-radius: 5px;
 }
 
-/* Hover and active button effects */
 button:hover {
     background-color: #444; /* Darker hover effect */
     color: #ffcc00; /* Brighter gold on hover */
 }
 
-/* Ranking list items */
 #ranking-list li {
     font-size: 1.2em;
     margin: 10px 0;
     color: #ffcc00; /* Bright golden for ranking items */
 }
 
-/* Diablo 2-themed footer or additional sections */
-footer {
-    background-color: rgba(0, 0, 0, 0.8);
-    border-top: 2px solid #b8860b;
-    padding: 10px;
-    color: #b8860b;
-    text-align: center;
-}
-
-/* Make sure the creatures have low opacity for subtle background effect */
-.creature-bg, .gargoyle-bg {
-    opacity: 0.1; /* Low opacity for subtle effect */
-}
-
-/* Font styles */
 h1, h2, h3 {
     font-size: 2em;
     color: #ffcc00; /* Bright golden for headers */
@@ -67,7 +50,6 @@ p, label {
     color: #b8860b;
 }
 
-/* Admin hidden panel */
 #admin-panel {
     display: none; /* Hidden by default */
     background-color: rgba(0, 0, 0, 0.8);
