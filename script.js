@@ -67,6 +67,9 @@ itemList.addEventListener('click', function(event) {
                 itemOptionsList.innerHTML += `<li>${item}</li>`; // Add items to the list
             });
             document.getElementById('potential-items').style.display = 'block'; // Show potential items
+
+            // Start a 12-hour countdown for this item
+            startCountdown(43200, document.querySelector('.timer')); // 12 hours in seconds
         }
     }
 });
@@ -75,18 +78,4 @@ itemList.addEventListener('click', function(event) {
 const buildIcons = document.querySelectorAll('.build-icon');
 buildIcons.forEach(icon => {
     icon.addEventListener('click', function() {
-        const selectedBuild = this.getAttribute('data-build');
-        alert(`Selected Build: ${selectedBuild}`);
-    });
-});
-
-// User form submission and ranking
-document.getElementById('user-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent default form submission
-
-    const username = document.getElementById('username').value;
-    const reputation = document.getElementById('reputation').value;
-
-    // Add to the ranking list
-    const rankingList = document.getElementById('ranking-list');
-    rankingList.innerHTML
+        const
