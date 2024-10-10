@@ -86,8 +86,8 @@ body {
     background-color: purple; /* Purple for Epic */
 }
 
-/* Real-time Ranking Styles */
-.real-time-ranking {
+/* Priority List Styles */
+.priority-list {
     margin-top: 20px;
 }
 
@@ -102,6 +102,12 @@ body {
 button:hover {
     background-color: #444; /* Darker hover effect */
     color: #ffcc00; /* Brighter gold on hover */
+}
+
+/* Countdown Timer Styles */
+#countdown {
+    margin-top: 20px;
+    color: #ff0000; /* Red color for countdown */
 }
 
 /* Clearfix for float */
