@@ -36,4 +36,62 @@
                 <option value="trait">Trait</option>
                 <option value="copy">Copy</option>
                 <option value="lithograph">Lithograph</option>
-            </
+            </select>
+
+            <button type="submit">Request Item</button>
+        </form>
+
+        <div class="priority-list">
+            <h3>Priority List</h3>
+            <ul id="ranking-list">
+                <!-- Priority list will be dynamically updated here -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Admin Login Button -->
+    <button id="admin-access-btn">Admin Login</button>
+
+    <!-- Hidden Admin Panel -->
+    <div class="admin-panel" id="admin-panel" style="display:none;">
+        <span id="close-admin-panel">X</span> <!-- Close button -->
+
+        <h1>Admin Panel</h1>
+
+        <!-- Left Sidebar for Category Selection -->
+        <div id="sidebar">
+            <button class="category-btn" data-category="weapons">Weapons</button>
+            <button class="category-btn" data-category="armor">Armor</button>
+            <button class="category-btn" data-category="accessories">Accessories</button>
+
+            <div id="item-list" style="display:none;">
+                <!-- Item buttons will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Middle Section for Item Details -->
+        <div id="middle-section">
+            <div id="rarity-options" style="display:none;">
+                <button class="rarity-btn" data-rarity="rare">Rare</button>
+                <button class="rarity-btn" data-rarity="epic">Epic</button>
+            </div>
+            <div id="potential-items" style="display:none;">
+                <h3>Potential Items:</h3>
+                <ul id="item-options-list">
+                    <!-- Potential items will be listed here -->
+                </ul>
+            </div>
+            <div id="countdown" style="display:none;">
+                <h3>Countdown: <span id="timer">12:00:00</span></h3>
+            </div>
+        </div>
+
+        <!-- Top Right Search Bar -->
+        <div id="search-container">
+            <input type="text" id="search-bar" placeholder="Search for items..." />
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
