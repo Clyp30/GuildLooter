@@ -1,112 +1,72 @@
-/* Body background with creatures and gargoyles */
-body {
-    background-image: url('creature-bg.png'), url('gargoyle-bg.png'); /* Replace with actual image URLs */
-    background-size: cover;
-    background-position: center, bottom;
-    background-repeat: no-repeat;
-    background-blend-mode: darken;
-    background-color: #1a1a1a; /* Dark background */
-    color: #b8860b; /* Dark golden color for text */
-    font-family: 'DiabloFont', serif; /* Optional: Custom Diablo-inspired font */
-}
+// Admin login system
+document.getElementById('admin-access-btn').addEventListener('click', function() {
+    const password = prompt('Enter Admin Password:');
+    if (password === 'adminpassword') { // Replace with your secure password
+        document.getElementById('admin-panel').style.display = 'block';
+    } else {
+        alert('Incorrect password!');
+    }
+});
 
-/* User Section */
-.user-section {
-    background-color: rgba(0, 0, 0, 0.7);
-    border: 2px solid #b8860b;
-    padding: 20px;
-    border-radius: 10px;
-}
+// Category button functionality
+const categoryButtons = document.querySelectorAll('.category-btn');
+const itemList = document.getElementById('item-list');
 
-/* Admin Panel Styles */
-.admin-panel {
-    display: none; /* Hidden by default */
-    background-color: rgba(0, 0, 0, 0.8);
-    border: 2px solid #b8860b;
-    padding: 20px;
-    border-radius: 10px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    z-index: 1000;
-    color: #b8860b; /* Dark golden text */
-}
+categoryButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const category = this.getAttribute('data-category');
+        itemList.innerHTML = ''; // Clear existing items
 
-/* Sidebar Styles */
-#sidebar {
-    width: 20%;
-    float: left;
-}
+        // Load items based on category
+        if (category === 'weapons') {
+            itemList.innerHTML += '<button class="item-btn" data-item="greatsword">Greatsword</button>';
+            itemList.innerHTML += '<button class="item-btn" data-item="sword">Sword</button>';
+            itemList.innerHTML += '<button class="item-btn" data-item="dagger">Dagger</button>';
+            itemList.innerHTML += '<button class="item-btn" data-item="crossbow">Crossbow</button>';
+            itemList.innerHTML += '<button class="item-btn" data-item="longbow">Longbow</button>';
+            itemList.innerHTML += '<button class="item-btn" data-item="staff">Staff</button>';
+            itemList.innerHTML += '<button class="item-btn" data-item="wand">Wand</button>';
+        } else if (category === 'armor') {
+            itemList.innerHTML += '<button class="item-btn" data-item="chestplate">Chestplate</button>';
+            // Add more armor options as needed
+        } else if (category === 'accessories') {
+            itemList.innerHTML += '<button class="item-btn" data-item="ring">Ring</button>';
+            itemList.innerHTML += '<button class="item-btn" data-item="belt">Belt</button>';
+            // Add more accessory options as needed
+        }
 
-.category-btn {
-    display: block;
-    margin: 10px 0;
-    padding: 10px;
-    background-color: #444;
-    color: #b8860b;
-    border: 2px solid #b8860b;
-    cursor: pointer;
-}
+        itemList.style.display = 'block'; // Show the item list
+    });
+});
 
-/* Middle Section Styles */
-#middle-section {
-    float: left;
-    width: 70%;
-    padding: 20px;
-}
+// Item button functionality
+itemList.addEventListener('click', function(event) {
+    if (event.target.classList.contains('item-btn')) {
+        const selectedItem = event.target.getAttribute('data-item');
+        const rarityOptions = document.getElementById('rarity-options');
+        
+        // Show rarity options
+        rarityOptions.style.display = 'block';
+    }
+});
 
-/* Search Container */
-#search-container {
-    text-align: right;
-    margin-bottom: 10px;
-}
+// Form submission for user requests
+document.getElementById('user-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
 
-#search-bar {
-    padding: 10px;
-    border: 2px solid #b8860b;
-    color: #b8860b;
-    background-color: #333;
-}
+    // Collect data
+    const weapons = document.getElementById('weapons').value.split(',').map(item => item.trim());
+    const reputation = parseInt(document.getElementById('reputation').value);
+    const use = document.getElementById('use').value;
 
-/* Rarity Buttons */
-.rarity-btn {
-    padding: 10px;
-    margin: 5px;
-    color: white;
-}
-
-.rarity-btn[data-rarity="rare"] {
-    background-color: blue; /* Blue for Rare */
-}
-
-.rarity-btn[data-rarity="epic"] {
-    background-color: purple; /* Purple for Epic */
-}
-
-/* Real-time Ranking Styles */
-.real-time-ranking {
-    margin-top: 20px;
-}
-
-/* Ranking list items */
-#ranking-list li {
-    font-size: 1.2em;
-    margin: 10px 0;
-    color: #ffcc00; /* Bright golden for ranking items */
-}
-
-/* Button hover effects */
-button:hover {
-    background-color: #444; /* Darker hover effect */
-    color: #ffcc00; /* Brighter gold on hover */
-}
-
-/* Clearfix for float */
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
+    // Calculate total reputation based on the use selected
+    let totalReputation = reputation;
+    switch (use) {
+        case 'equip':
+            totalReputation += 3000;
+            break;
+        case 'trait':
+            totalReputation += 2000;
+            break;
+        case 'copy':
+            total
