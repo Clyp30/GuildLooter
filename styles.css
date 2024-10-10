@@ -40,4 +40,72 @@ button:hover {
 
 .build-icon {
     display: inline-block;
-    margin: 
+    margin: 5px;
+    cursor: pointer;
+}
+
+.build-icon img {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0.8) contrast(1.2);
+}
+
+#item-list {
+    margin-top: 10px;
+    display: none;
+}
+
+#rarity-options {
+    margin-top: 10px;
+    color: #D4AF37;
+}
+
+.timer {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FF0000;
+}
+
+#ranking-list li {
+    color: #D4AF37;
+}
+
+#user-form-container, #priority-list-container {
+    background: rgba(30, 30, 30, 0.9);
+    padding: 20px;
+    border: 1px solid #4A0000;
+}
+
+h1 {
+    color: #FFD700;
+}
+
+h3, h4 {
+    color: #D4AF37;
+}
+
+#submit-request {
+    position: absolute;
+    left: 20px; /* Move it more to the left */
+}
+
+.items-list {
+    color: #D4AF37;
+    margin: 10px;
+    background: rgba(50, 50, 50, 0.7); /* Dark list background */
+    padding: 10px;
+    border: 1px solid #4A0000;
+}
+
+.items-list .request-btn {
+    float: right; /* Float the 'Request' button to the right */
+    background-color: #8B0000;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #FFD700;
+}
+
+.items-list .request-btn:hover {
+    background-color: #A00000;
+}
