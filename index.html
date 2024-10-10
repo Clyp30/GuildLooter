@@ -3,82 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>Guild Loot Distribution</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="container">
-        <h1>Guild Loot Distribution</h1>
-        
-        <button id="admin-access-btn">Admin Login</button>
-        
-        <div id="user-form-container">
-            <h3>Request Item</h3>
-            <form id="user-form">
-                <input type="text" id="username" placeholder="In-Game Name" required>
-                <input type="number" id="reputation" placeholder="Reputation" required>
-                
-                <h4 class="build-title">Build:</h4>
-                <div id="build-selection">
-                    <div class="build-icon" data-build="Staff">
-                        <img src="images/staff-icon.png" alt="Staff">
-                    </div>
-                    <div class="build-icon" data-build="Daggers">
-                        <img src="images/daggers-icon.png" alt="Daggers">
-                    </div>
-                    <div class="build-icon" data-build="Xbox">
-                        <img src="images/xbox-icon.png" alt="Xbox">
-                    </div>
-                    <div class="build-icon" data-build="Longbow">
-                        <img src="images/longbow-icon.png" alt="Longbow">
-                    </div>
-                    <div class="build-icon" data-build="Wand">
-                        <img src="images/wand-icon.png" alt="Wand">
-                    </div>
-                    <div class="build-icon" data-build="Greatsword">
-                        <img src="images/greatsword-icon.png" alt="Greatsword">
-                    </div>
-                    <div class="build-icon" data-build="Shield">
-                        <img src="images/shield-icon.png" alt="Shield">
-                    </div>
-                    <div class="build-icon" data-build="Sword">
-                        <img src="images/sword-icon.png" alt="Sword">
-                    </div>
-                </div>
-                
-                <button type="submit">Submit Request</button>
-            </form>
+    <h1>Guild Loot Distribution</h1>
+
+    <!-- Main User Section -->
+    <div id="user-form-container">
+        <h3>Submit Your Build</h3>
+        <p class="build-title">Select Your Build:</p>
+        <div class="build-options">
+            <span class="build-icon"><img src="icons/staff.png" alt="Staff"></span>
+            <span class="build-icon"><img src="icons/daggers.png" alt="Daggers"></span>
+            <span class="build-icon"><img src="icons/xbox.png" alt="Xbox"></span>
+            <span class="build-icon"><img src="icons/longbow.png" alt="Longbow"></span>
+            <span class="build-icon"><img src="icons/wand.png" alt="Wand"></span>
+            <span class="build-icon"><img src="icons/greatsword.png" alt="Greatsword"></span>
+            <span class="build-icon"><img src="icons/shield.png" alt="Shield"></span>
+            <span class="build-icon"><img src="icons/sword.png" alt="Sword"></span>
         </div>
 
-        <div id="priority-list-container">
-            <h3>Priority List</h3>
-            <ul id="ranking-list"></ul>
-        </div>
-
-        <div id="admin-panel" style="display: none;">
-            <button id="close-admin-panel">&times;</button>
-            <h3>Admin Panel</h3>
-            <div class="categories">
-                <button class="category-btn" data-category="weapons">Weapons</button>
-                <button class="category-btn" data-category="armor">Armor</button>
-                <button class="category-btn" data-category="accessories">Accessories</button>
-            </div>
-            <div id="item-list"></div>
-            <div id="rarity-options" style="display: none;">
-                <h4>Select Rarity:</h4>
-                <button class="rarity-btn" data-rarity="rare">Rare</button>
-                <button class="rarity-btn" data-rarity="epic">Epic</button>
-                <div id="potential-items" style="display: none;">
-                    <h4>Potential Items:</h4>
-                    <ul id="item-options-list"></ul>
-                    <div id="item-timer">
-                        <h4>Countdown Timer: <span class="timer">12:00:00</span></h4>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <form id="user-form">
+            <label for="ingame-name">In-game Name:</label>
+            <input type="text" id="ingame-name" name="ingame-name" placeholder="Enter your in-game name">
+            <br>
+            <label for="reputation">Reputation:</label>
+            <input type="number" id="reputation" name="reputation" placeholder="Enter your reputation">
+            <br>
+            <label for="usage">Select Usage:</label>
+            <select id="usage" name="usage">
+                <option value="equip">Equip (+3000)</option>
+                <option value="trait">Trait (+2000)</option>
+                <option value="copy">Copy (+1000)</option>
+                <option value="lithograph">Lithograph (+500)</option>
+            </select>
+            <br>
+            <input type="submit" value="Submit Build">
+        </form>
     </div>
 
+    <!-- Items Listed Section -->
+    <div id="items-listed-container">
+        <h3>Items Listed</h3>
+        <div class="items-list">
+            <span>Morokai's Greatblade of Corruption</span>
+            <button class="request-btn">Request</button>
+        </div>
+        <div class="items-list">
+            <span>Duke Magna's Provoking Warblade</span>
+            <button class="request-btn">Request</button>
+        </div>
+        <div class="items-list">
+            <span>Heroic Broadsword of the Resistance</span>
+            <button class="request-btn">Request</button>
+        </div>
+        <div class="items-list">
+            <span>Greatsword of the Banshee</span>
+            <button class="request-btn">Request</button>
+        </div>
+        <!-- More items can be added as needed -->
+    </div>
+
+    <!-- Admin Panel Access Button -->
+    <button id="admin-login-btn">Admin Login</button>
+
+    <!-- Admin Panel (Initially hidden) -->
+    <div id="admin-panel" style="display: none;">
+        <h3>Admin Panel</h3>
+        <div class="category-buttons">
+            <button id="weapons-btn">Weapons</button>
+            <button id="armor-btn">Armor</button>
+            <button id="accessories-btn">Accessories</button>
+        </div>
+
+        <div id="item-list"></div>
+        <div id="rarity-options"></div>
+
+        <input type="text" id="item-search-bar" placeholder="Search items...">
+        <button id="close-admin-btn">X</button>
+    </div>
+
+    <!-- Script -->
     <script src="script.js"></script>
 </body>
 </html>
