@@ -1,31 +1,41 @@
-<!-- Admin Access Button -->
-<button id="admin-access-btn">Admin Login</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guild Loot Distribution</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Guild Loot Distribution</h1>
+    
+    <div class="user-section">
+        <h2>User Section</h2>
+        <form id="user-form">
+            <label for="weapons">Weapons of Use:</label>
+            <input type="text" id="weapons" placeholder="Enter weapons (comma separated)">
+            <label for="reputation">Reputation:</label>
+            <input type="number" id="reputation" placeholder="Enter your reputation">
+            <label for="use">Use of Item:</label>
+            <select id="use">
+                <option value="equip">Equip</option>
+                <option value="trait">Trait</option>
+                <option value="copy">Copy</option>
+                <option value="lithograph">Lithograph</option>
+            </select>
+            <button type="submit">Request Item</button>
+        </form>
 
-<!-- Hidden Admin Panel -->
-<div class="admin-panel" id="admin-panel" style="display:none;">
-    <h1>Admin Panel</h1>
-
-    <!-- Left Sidebar for Category Selection -->
-    <div id="sidebar">
-        <button class="category-btn" data-category="weapons">Weapons</button>
-        <button class="category-btn" data-category="armor">Armor</button>
-        <button class="category-btn" data-category="accessories">Accessories</button>
-
-        <div id="item-list" style="display:none;">
-            <!-- Item buttons will be dynamically added here -->
+        <div class="real-time-ranking">
+            <h3>Real-Time Ranking</h3>
+            <ul id="ranking-list">
+                <!-- Ranking list will be dynamically updated here -->
+            </ul>
         </div>
     </div>
 
-    <!-- Middle Section for Item Details -->
-    <div id="middle-section">
-        <div id="rarity-options" style="display:none;">
-            <button class="rarity-btn" data-rarity="rare">Rare</button>
-            <button class="rarity-btn" data-rarity="epic">Epic</button>
-        </div>
-    </div>
+    <button id="admin-access-btn">Admin Login</button>
 
-    <!-- Top Right Search Bar -->
-    <div id="search-container">
-        <input type="text" id="search-bar" placeholder="Search for items..." />
-    </div>
-</div>
+    <!-- Hidden Admin Panel -->
+    <div class="admin-panel" id="admin-panel" style="display:none;">
+        <h
