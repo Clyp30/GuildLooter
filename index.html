@@ -3,61 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guild Loot Distribution</title>
+    <title>Guild Looter</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Guild Loot Distribution</h1>
-            <button id="admin-login">Admin Login</button>
-        </header>
-
-        <!-- Collapsible Items Listed Section -->
-        <div class="collapsible" id="items-listed-bar">Items Listed</div>
-        <div class="collapsible-content" id="items-list-content"></div>
-
-        <!-- User Build Section -->
-        <div class="build-section">
-            <h2>Select Your Build</h2>
-            <div class="build-icons">
-                <img src="path/to/staff.png" alt="Staff" class="build-icon" data-build="Staff">
-                <img src="path/to/daggers.png" alt="Daggers" class="build-icon" data-build="Daggers">
-                <img src="path/to/xbox.png" alt="Xbox" class="build-icon" data-build="Xbox">
-                <img src="path/to/longbow.png" alt="Longbow" class="build-icon" data-build="Longbow">
-                <img src="path/to/wand.png" alt="Wand" class="build-icon" data-build="Wand">
-                <img src="path/to/greatsword.png" alt="Greatsword" class="build-icon" data-build="Greatsword">
-                <img src="path/to/shield.png" alt="Shield" class="build-icon" data-build="Shield">
-                <img src="path/to/sword.png" alt="Sword" class="build-icon" data-build="Sword">
+    <div id="app">
+        <h1>Guild Loot Distribution</h1>
+        
+        <div id="main-content">
+            <!-- Select Build Section -->
+            <div id="build-section">
+                <h2>Select your Build</h2>
+                <div class="build-options">
+                    <div class="build-icon" data-build="Staff">Staff</div>
+                    <div class="build-icon" data-build="Daggers">Daggers</div>
+                    <div class="build-icon" data-build="Xbox">Xbox</div>
+                    <div class="build-icon" data-build="Longbow">Longbow</div>
+                    <div class="build-icon" data-build="Wand">Wand</div>
+                    <div class="build-icon" data-build="Greatsword">Greatsword</div>
+                    <div class="build-icon" data-build="Shield">Shield</div>
+                    <div class="build-icon" data-build="Sword">Sword</div>
+                </div>
+                <button id="submit-build" disabled>Submit Build</button>
             </div>
-            <button id="submit-build" disabled>Submit Your Build</button>
-        </div>
-    </div>
-
-    <!-- Admin Panel -->
-    <div id="admin-panel" class="hidden">
-        <button class="close-admin-panel">X</button>
-        <div class="admin-section">
-            <div class="left-panel">
-                <button id="weapon-btn">Weapons</button>
-                <button id="armor-btn">Armor</button>
-                <button id="accessories-btn">Accessories</button>
-                <div id="weapon-options" class="hidden">
-                    <button class="weapon-type" data-type="Greatsword">Greatsword</button>
-                    <button class="weapon-type" data-type="Sword">Sword</button>
-                    <button class="weapon-type" data-type="Dagger">Dagger</button>
-                    <button class="weapon-type" data-type="Crossbow">Crossbow</button>
-                    <button class="weapon-type" data-type="Longbow">Longbow</button>
-                    <button class="weapon-type" data-type="Staff">Staff</button>
-                    <button class="weapon-type" data-type="Wand">Wand</button>
+            
+            <!-- Collapsible Items Listed Section -->
+            <div id="items-list-section">
+                <button class="collapsible">Items Listed</button>
+                <div class="collapsible-content">
+                    <!-- Listed items will appear here -->
                 </div>
             </div>
-            <div class="middle-panel" id="item-details">
-                <!-- Item details will appear here dynamically -->
+
+            <!-- Secret Directory (Hidden by Default) -->
+            <div id="secret-directory" class="hidden">
+                <h2>Secret Directory of Items</h2>
+                <div class="filter-options">
+                    <div id="filter-weapon" class="filter-button">Weapons</div>
+                    <div id="filter-armor" class="filter-button">Armor</div>
+                    <div id="filter-accessory" class="filter-button">Accessory</div>
+                </div>
+                <div class="directory-content">
+                    <!-- Directory items will be filtered and listed here -->
+                </div>
             </div>
-            <div class="right-panel">
-                <input type="text" id="search-bar" placeholder="Search for items...">
+        </div>
+
+        <!-- Admin Login Button -->
+        <button id="admin-login">Admin Login</button>
+
+        <!-- Admin Panel (Hidden initially) -->
+        <div id="admin-panel" class="hidden">
+            <h2>Admin Panel</h2>
+            <div class="category-buttons">
+                <button id="admin-weapons">Weapons</button>
+                <button id="admin-armor">Armor</button>
+                <button id="admin-accessories">Accessories</button>
             </div>
+            <div id="admin-category-options">
+                <!-- Admin category options will dynamically appear here -->
+            </div>
+            <input type="text" id="admin-search-bar" placeholder="Search for items...">
+            <div id="admin-list-items"></div>
+            <button id="close-admin-panel">X</button>
         </div>
     </div>
 
