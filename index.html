@@ -5,63 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guild Loot Distribution</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
 </head>
 <body>
-    <div id="main-container">
-        <header>
-            <h1>Guild Loot Distribution</h1>
-            <button id="admin-login">Admin Login</button>
-        </header>
-
-        <div id="admin-panel" class="hidden">
-            <div class="admin-header">
-                <h2>Admin Panel</h2>
-                <button id="esc-button">Esc</button>
-            </div>
-            <div class="admin-content">
-                <div class="category-selection">
-                    <button class="category-btn" data-type="weapon">Weapons</button>
-                    <button class="category-btn" data-type="armor">Armor</button>
-                    <button class="category-btn" data-type="accessory">Accessories</button>
-                    <div id="subtype-filters" class="hidden"></div>
-                </div>
-                <div id="item-details" class="hidden">
-                    <input type="text" id="item-name" placeholder="Enter item name">
-                    <input type="text" id="item-trait" placeholder="Enter item trait (optional)">
-                    <button id="list-item-btn">List Item</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="items-listed" class="collapsible">
-            <button class="collapsible-btn">Items Listed</button>
-            <div class="content">
-                <!-- Item listings will be populated here -->
-            </div>
-        </div>
-
+    <div id="main">
+        <h1>Guild Loot Distribution</h1>
+        
+        <!-- User Panel -->
         <div id="user-section">
             <h2>Select Your Build</h2>
             <div id="build-icons">
-                <img src="greatsword-icon.png" class="build-icon" data-build="Greatsword">
-                <img src="staff-icon.png" class="build-icon" data-build="Staff">
-                <!-- Add other icons here -->
+                <img src="path-to-icon/staff.png" alt="Staff" id="staff-icon" class="build-icon">
+                <img src="path-to-icon/daggers.png" alt="Daggers" id="daggers-icon" class="build-icon">
+                <img src="path-to-icon/xbox.png" alt="Xbox" id="xbox-icon" class="build-icon">
+                <img src="path-to-icon/longbow.png" alt="Longbow" id="longbow-icon" class="build-icon">
+                <img src="path-to-icon/wand.png" alt="Wand" id="wand-icon" class="build-icon">
+                <img src="path-to-icon/greatsword.png" alt="Greatsword" id="greatsword-icon" class="build-icon">
+                <img src="path-to-icon/shield.png" alt="Shield" id="shield-icon" class="build-icon">
+                <img src="path-to-icon/sword.png" alt="Sword" id="sword-icon" class="build-icon">
             </div>
-            <button id="submit-build" class="disabled" disabled>Submit Build</button>
+
+            <h2>Items Listed</h2>
+            <div id="items-listed">
+                <button id="collapse-bar">Items Listed (Click to Expand)</button>
+                <div id="items-content" class="collapse">
+                    <!-- Items will be populated here -->
+                </div>
+            </div>
         </div>
 
-        <!-- Hidden Directory Panel -->
-        <div id="secret-directory" class="hidden">
-            <div id="directory-filter">
-                <button data-type="weapon">Weapons</button>
-                <button data-type="armor">Armor</button>
-                <button data-type="accessory">Accessories</button>
+        <!-- Admin Login -->
+        <button id="admin-login">Admin Login</button>
+
+        <!-- Admin Panel -->
+        <div id="admin-panel" class="hidden">
+            <div id="admin-header">
+                <span>Admin Panel</span>
+                <button id="close-admin">X</button>
             </div>
-            <div id="directory-items" class="hidden">
-                <!-- Items sorted by type and subtype will appear here -->
+
+            <div id="admin-categories">
+                <button id="weapon-btn">Weapon</button>
+                <button id="armor-btn">Armor</button>
+                <button id="accessory-btn">Accessory</button>
+            </div>
+
+            <div id="admin-subcategories">
+                <!-- Subcategories appear here -->
+            </div>
+
+            <div id="admin-item-listing">
+                <!-- Listing bar for item details -->
+            </div>
+        </div>
+
+        <!-- Hidden Item Directory -->
+        <div id="item-directory" class="hidden">
+            <h2>Item Directory</h2>
+            <div id="filters">
+                <button id="filter-weapon">Weapon</button>
+                <button id="filter-armor">Armor</button>
+                <button id="filter-accessory">Accessory</button>
+            </div>
+            <div id="sorted-items">
+                <!-- Sorted items will be shown here -->
             </div>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
