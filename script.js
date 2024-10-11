@@ -1,81 +1,134 @@
-// Admin login system
-document.getElementById('admin-access-btn').addEventListener('click', function() {
-    const password = prompt('Enter Admin Password:');
-    if (password === 'adminpassword') { // Replace with your secure password
-        document.getElementById('admin-panel').style.display = 'block'; // Show the admin panel
-    } else {
-        alert('Incorrect password!'); // Alert on incorrect password
-    }
-});
+document.addEventListener('DOMContentLoaded', function () {
+    // Admin login functionality
+    const adminLoginBtn = document.getElementById('admin-login-btn');
+    const adminPanel = document.getElementById('admin-panel');
+    const closeAdminBtn = document.getElementById('close-admin-btn');
+    const password = 'admin123'; // Set your admin password here
 
-// Close Admin Panel
-document.getElementById('close-admin-panel').addEventListener('click', function() {
-    document.getElementById('admin-panel').style.display = 'none'; // Hide the admin panel
-});
-
-// Category button functionality
-const categoryButtons = document.querySelectorAll('.category-btn');
-const itemList = document.getElementById('item-list');
-
-categoryButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const category = this.getAttribute('data-category');
-        itemList.innerHTML = ''; // Clear existing items
-
-        // Load items based on category
-        if (category === 'weapons') {
-            itemList.innerHTML += '<button class="item-btn" data-item="greatsword">Greatsword</button>';
-            // Add more weapons as needed
-        } else if (category === 'armor') {
-            itemList.innerHTML += '<button class="item-btn" data-item="chestplate">Chestplate</button>';
-            // Add more armor options as needed
-        } else if (category === 'accessories') {
-            itemList.innerHTML += '<button class="item-btn" data-item="ring">Ring</button>';
-            itemList.innerHTML += '<button class="item-btn" data-item="belt">Belt</button>';
-            // Add more accessory options as needed
+    adminLoginBtn.addEventListener('click', function () {
+        const enteredPassword = prompt('Enter Admin Password:');
+        if (enteredPassword === password) {
+            adminPanel.style.display = 'block';
+        } else {
+            alert('Incorrect password.');
         }
+    });
 
-        itemList.style.display = 'block'; // Show the item list
+    closeAdminBtn.addEventListener('click', function () {
+        adminPanel.style.display = 'none';
+    });
+
+    // Collapsible functionality for listed items
+    const collapsible = document.getElementsByClassName('collapsible');
+    for (let i = 0; i < collapsible.length; i++) {
+        collapsible[i].addEventListener('click', function () {
+            this.classList.toggle('active');
+            const content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        });
+    }
+
+    // Adding more functionality to dynamically list items and requests in real-time
+    const itemList = [
+        "Morokai's Greatblade of Corruption",
+        "Duke Magna's Provoking Warblade",
+        "Heroic Broadsword of the Resistance",
+        "Greatsword of the Banshee",
+        "Adentus's Gargantuan Greatsword",
+        "Junobote's Juggernaut Warblade",
+        "Tevent's Warblade of Despair"
+    ];
+
+    const itemContainer = document.getElementById('item-list');
+    const rarityOptions = document.getElementById('rarity-options');
+
+    // Dynamically add items when category (weapon, armor, accessory) is selected
+    const weaponsBtn = document.getElementById('weapons-btn');
+    const armorBtn = document.getElementById('armor-btn');
+    const accessoriesBtn = document.getElementById('accessories-btn');
+
+    weaponsBtn.addEventListener('click', function () {
+        itemContainer.innerHTML = ''; // Clear previous items
+        rarityOptions.innerHTML = ''; // Clear previous rarity options
+
+        itemList.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.innerHTML = item;
+            itemElement.classList.add('item-entry');
+            itemContainer.appendChild(itemElement);
+        });
+
+        const rareOption = document.createElement('button');
+        rareOption.innerHTML = 'Rare (Blue)';
+        rareOption.classList.add('rarity-btn');
+
+        const epicOption = document.createElement('button');
+        epicOption.innerHTML = 'Epic (Purple)';
+        epicOption.classList.add('rarity-btn');
+
+        rarityOptions.appendChild(rareOption);
+        rarityOptions.appendChild(epicOption);
+        itemContainer.style.display = 'block';
+        rarityOptions.style.display = 'block';
+    });
+
+    armorBtn.addEventListener('click', function () {
+        itemContainer.innerHTML = ''; // Clear previous items
+        rarityOptions.innerHTML = ''; // Clear previous rarity options
+        // Example armor items can be added here
+        const armorItems = ['Generic Armor 1', 'Generic Armor 2', 'Generic Armor 3'];
+        armorItems.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.innerHTML = item;
+            itemElement.classList.add('item-entry');
+            itemContainer.appendChild(itemElement);
+        });
+        rarityOptions.style.display = 'none';
+    });
+
+    accessoriesBtn.addEventListener('click', function () {
+        itemContainer.innerHTML = ''; // Clear previous items
+        rarityOptions.innerHTML = ''; // Clear previous rarity options
+        // Example accessory items can be added here
+        const accessoryItems = ['Ring', 'Belt'];
+        accessoryItems.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.innerHTML = item;
+            itemElement.classList.add('item-entry');
+            itemContainer.appendChild(itemElement);
+        });
+        rarityOptions.style.display = 'none';
+    });
+
+    // Example function to handle form submission (user request submission)
+    const userForm = document.getElementById('user-form');
+    userForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const inGameName = document.getElementById('ingame-name').value;
+        const reputation = parseInt(document.getElementById('reputation').value, 10);
+        const usage = document.getElementById('usage').value;
+
+        let additionalRep = 0;
+        if (usage === 'equip') additionalRep = 3000;
+        else if (usage === 'trait') additionalRep = 2000;
+        else if (usage === 'copy') additionalRep = 1000;
+        else if (usage === 'lithograph') additionalRep = 500;
+
+        const totalReputation = reputation + additionalRep;
+
+        // Dynamically add request to real-time request list
+        const requestDiv = document.createElement('div');
+        requestDiv.classList.add('request-list');
+        requestDiv.innerHTML = `
+            <p>In-game Name: <span class="user-name">${inGameName}</span></p>
+            <p>Reputation: <span class="user-reputation">${totalReputation}</span></p>
+            <p>Build: <span class="user-build">Greatsword</span></p>
+        `;
+        document.querySelector('.collapsible-content').appendChild(requestDiv);
     });
 });
-
-// Item button functionality
-itemList.addEventListener('click', function(event) {
-    if (event.target.classList.contains('item-btn')) {
-        const selectedItem = event.target.getAttribute('data-item');
-        const rarityOptions = document.getElementById('rarity-options');
-
-        // Show rarity options
-        rarityOptions.style.display = 'block';
-
-        // Populate potential items based on selected rarity
-        const itemOptionsList = document.getElementById('item-options-list');
-        itemOptionsList.innerHTML = ''; // Clear previous options
-
-        if (selectedItem === 'greatsword') {
-            const items = [
-                "Morokai's Greatblade of Corruption",
-                "Duke Magna's Provoking Warblade",
-                "Heroic Broadsword of the Resistance",
-                "Greatsword of the Banshee",
-                "Adentus's Gargantuan Greatsword",
-                "Junobote's Juggernaut Warblade",
-                "Tevent's Warblade of Despair"
-            ];
-
-            items.forEach(item => {
-                itemOptionsList.innerHTML += `<li>${item}</li>`; // Add items to the list
-            });
-            document.getElementById('potential-items').style.display = 'block'; // Show potential items
-
-            // Start a 12-hour countdown for this item
-            startCountdown(43200, document.querySelector('.timer')); // 12 hours in seconds
-        }
-    }
-});
-
-// Build selection functionality
-const buildIcons = document.querySelectorAll('.build-icon');
-buildIcons.forEach(icon => {
-    icon.addEventListener('click', function() {
-        const
