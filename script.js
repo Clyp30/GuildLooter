@@ -1,44 +1,50 @@
-document.getElementById('collapse-items-btn').addEventListener('click', function () {
-    const content = document.getElementById('item-list-content');
-    content.classList.toggle('hidden');
-});
+// Open and Close Admin Panel
+const adminLoginButton = document.getElementById('admin-login');
+const adminPanel = document.querySelector('.admin-panel');
+const closeAdminButton = document.getElementById('close-admin');
+const collapsibleItemsListed = document.getElementById('collapsible-items-listed');
+const itemsContent = document.getElementById('items-content');
 
-const selectedBuilds = [];
-document.getElementById('build-icons').addEventListener('click', function (event) {
-    const target = event.target;
-    if (target.classList.contains('build-icon')) {
-        const buildName = target.getAttribute('data-build');
-        if (selectedBuilds.includes(buildName)) {
-            target.classList.remove('selected');
-            selectedBuilds.splice(selectedBuilds.indexOf(buildName), 1);
-        } else if (selectedBuilds.length < 2) {
-            target.classList.add('selected');
-            selectedBuilds.push(buildName);
-        } else {
-            alert("Only 2 weapons of choice allowed.");
-        }
-    }
-
-    // Enable the submit button if 2 builds are selected
-    const submitButton = document.getElementById('submit-build');
-    if (selectedBuilds.length === 2) {
-        submitButton.classList.remove('disabled');
-        submitButton.disabled = false;
+adminLoginButton.addEventListener('click', () => {
+    let password = prompt("Enter Admin Password:");
+    if (password === 'admin123') {
+        adminPanel.style.display = 'flex';
     } else {
-        submitButton.classList.add('disabled');
-        submitButton.disabled = true;
+        alert("Incorrect Password!");
     }
 });
 
-// Implementing rules for item requests (rarity limitations per day)
-const userLimits = {
-    rare: 2,
-    purple: 1
-};
+closeAdminButton.addEventListener('click', () => {
+    adminPanel.style.display = 'none';
+});
 
-function resetDailyLimits() {
-    userLimits.rare = 2;
-    userLimits.purple = 1;
+// Collapsible items listed
+collapsibleItemsListed.addEventListener('click', () => {
+    collapsibleItemsListed.classList.toggle('active');
+    itemsContent.classList.toggle('active');
+});
+
+// Build selection
+const buildIcons = document.querySelectorAll('.build-icon');
+let selectedBuilds = [];
+
+buildIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+        if (selectedBuilds.includes(icon.id)) {
+            icon.classList.remove('selected');
+            selectedBuilds = selectedBuilds.filter(build => build !== icon.id);
+        } else if (selectedBuilds.length < 2) {
+            icon.classList.add('selected');
+            selectedBuilds.push(icon.id);
+        } else {
+            alert('Only 2 weapons of choice allowed.');
+        }
+    });
+});
+
+// Example item listing function for admin
+function listItem(type, subtype, name) {
+    let itemDiv = document.createElement('div');
+    itemDiv.textContent = `${type} > ${subtype} > ${name}`;
+    itemsContent.appendChild(itemDiv);
 }
-
-setInterval(resetDailyLimits, 24 * 60 * 60 * 1000); // Reset daily limits every 24 hours
