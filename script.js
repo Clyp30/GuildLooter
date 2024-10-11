@@ -77,4 +77,42 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
 
         const inGameName = document.getElementById('ingame-name').value;
-        const reputat
+        const reputation = parseInt(document.getElementById('reputation').value, 10);
+        const usage = document.getElementById('usage').value;
+
+        let additionalRep = 0;
+        if (usage === 'equip') additionalRep = 3000;
+        else if (usage === 'trait') additionalRep = 2000;
+        else if (usage === 'copy') additionalRep = 1000;
+        else if (usage === 'lithograph') additionalRep = 500;
+
+        const totalReputation = reputation + additionalRep;
+
+        const buildIcon = document.querySelector('.build-icon.selected');
+        const build = buildIcon ? buildIcon.getAttribute('data-build') : 'Unknown';
+
+        const requestDiv = document.createElement('div');
+        requestDiv.classList.add('request-list');
+        requestDiv.innerHTML = `
+            <p>In-game Name: ${inGameName}</p>
+            <p>Reputation: ${totalReputation}</p>
+            <p>Build: ${build}</p>
+        `;
+
+        // Add to the respective item's collapsible content
+        const selectedItemContent = document.querySelector('.collapsible.active + .collapsible-content');
+        if (selectedItemContent) {
+            selectedItemContent.innerHTML = ''; // Clear existing text
+            selectedItemContent.appendChild(requestDiv);
+        }
+    });
+
+    // Handle build icon selection
+    const buildIcons = document.querySelectorAll('.build-icon');
+    buildIcons.forEach(icon => {
+        icon.addEventListener('click', function () {
+            buildIcons.forEach(icon => icon.classList.remove('selected'));
+            this.classList.add('selected');
+        });
+    });
+});
