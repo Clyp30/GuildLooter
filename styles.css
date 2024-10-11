@@ -23,39 +23,22 @@ button:hover {
     background-color: #8b0000;
 }
 
-.hidden {
-    display: none;
+.collapsible {
+    margin-top: 20px;
 }
 
-.admin-header {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.admin-left-panel {
-    width: 200px;
-    float: left;
-}
-
-.admin-btn {
-    display: block;
+#collapse-items-btn {
     width: 100%;
-    margin-bottom: 10px;
+    background-color: #a52a2a;
 }
 
-.admin-middle-panel {
-    float: left;
-    width: 50%;
-    min-height: 300px;
+.content {
+    padding: 20px;
     border: 1px solid #d4af37;
+    background-color: #2f2f2f;
 }
 
-.admin-right-panel {
-    float: right;
-    width: 200px;
-}
-
-#build-section {
+#user-input-section {
     margin-top: 20px;
     text-align: center;
 }
@@ -74,19 +57,4 @@ button:hover {
 
 .build-icon:hover {
     border: 2px solid #d4af37;
-}
-
-.collapsible {
-    margin-top: 20px;
-}
-
-#collapse-items-btn {
-    width: 100%;
-    background-color: #a52a2a;
-}
-
-.content {
-    padding: 20px;
-    border: 1px solid #d4af37;
-    background-color: #2f2f2f;
 }
