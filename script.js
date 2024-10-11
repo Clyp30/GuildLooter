@@ -1,92 +1,95 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const adminLoginButton = document.getElementById('admin-login');
+document.addEventListener('DOMContentLoaded', () => {
+    const adminLoginBtn = document.getElementById('admin-login');
     const adminPanel = document.getElementById('admin-panel');
-    const escButton = document.getElementById('esc-button');
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    const subtypeFilters = document.getElementById('subtype-filters');
-    const listBtn = document.getElementById('list-item-btn');
-    const collapsibleBtn = document.querySelector('.collapsible-btn');
-    const itemsListedContent = document.querySelector('#items-listed .content');
-    let isAdminLoggedIn = false;
+    const closeAdminBtn = document.getElementById('close-admin');
+    const collapseBar = document.getElementById('collapse-bar');
+    const itemsContent = document.getElementById('items-content');
+    const filterWeaponBtn = document.getElementById('filter-weapon');
+    const filterArmorBtn = document.getElementById('filter-armor');
+    const filterAccessoryBtn = document.getElementById('filter-accessory');
+    const buildIcons = document.querySelectorAll('.build-icon');
+    let selectedBuilds = [];
+    let adminLoggedIn = false;
 
-    // Admin login functionality
-    adminLoginButton.addEventListener('click', function () {
-        if (!isAdminLoggedIn) {
+    // Admin Login System
+    adminLoginBtn.addEventListener('click', () => {
+        if (!adminLoggedIn) {
             const password = prompt('Enter Admin Password:');
-            if (password === 'admin123') { // Change this password to whatever you want
-                isAdminLoggedIn = true;
+            if (password === 'admin123') {
+                adminLoggedIn = true;
                 adminPanel.classList.remove('hidden');
-                alert('Welcome Admin!');
             } else {
                 alert('Incorrect Password');
             }
         } else {
-            adminPanel.classList.toggle('hidden');
+            adminPanel.classList.remove('hidden');
         }
     });
 
-    // ESC button to close admin panel
-    escButton.addEventListener('click', function () {
+    // Close Admin Panel
+    closeAdminBtn.addEventListener('click', () => {
         adminPanel.classList.add('hidden');
     });
 
-    // Category buttons for admin panel
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const type = this.getAttribute('data-type');
-            showSubtypeFilters(type);
+    // Collapsible Items Listed Bar
+    collapseBar.addEventListener('click', () => {
+        itemsContent.classList.toggle('collapse');
+    });
+
+    // Build Icons Selection
+    buildIcons.forEach(icon => {
+        icon.addEventListener('click', () => {
+            if (selectedBuilds.length < 2 || icon.classList.contains('selected')) {
+                icon.classList.toggle('selected');
+                if (icon.classList.contains('selected')) {
+                    selectedBuilds.push(icon.alt);
+                } else {
+                    selectedBuilds = selectedBuilds.filter(build => build !== icon.alt);
+                }
+            } else {
+                alert('You can only select up to 2 builds.');
+            }
         });
     });
 
-    // Show subtype filters based on selected category
-    function showSubtypeFilters(type) {
-        subtypeFilters.innerHTML = ''; // Clear previous filters
-        subtypeFilters.classList.remove('hidden');
-        
-        const weaponSubtypes = ['Staff', 'Daggers', 'Xbox', 'Longbow', 'Wand', 'Greatsword', 'Shield', 'Sword'];
-        const armorSubtypes = ['Chest', 'Helmet', 'Boots', 'Gloves'];
-        const accessorySubtypes = ['Ring', 'Belt'];
+    // Admin Panel Item Sorting
+    filterWeaponBtn.addEventListener('click', () => {
+        displayItemsByType('weapon');
+    });
 
-        let subtypes = [];
-        if (type === 'weapon') {
-            subtypes = weaponSubtypes;
-        } else if (type === 'armor') {
-            subtypes = armorSubtypes;
-        } else if (type === 'accessory') {
-            subtypes = accessorySubtypes;
+    filterArmorBtn.addEventListener('click', () => {
+        displayItemsByType('armor');
+    });
+
+    filterAccessoryBtn.addEventListener('click', () => {
+        displayItemsByType('accessory');
+    });
+
+    // Function to display items based on type
+    function displayItemsByType(type) {
+        let sortedItems = [];
+        switch (type) {
+            case 'weapon':
+                sortedItems = ['Sword', 'Dagger', 'Staff', 'Shield', 'Greatsword'];
+                break;
+            case 'armor':
+                sortedItems = ['Helmet', 'Chestplate', 'Gloves', 'Boots'];
+                break;
+            case 'accessory':
+                sortedItems = ['Ring', 'Belt', 'Amulet'];
+                break;
         }
-
-        subtypes.forEach(subtype => {
-            const btn = document.createElement('button');
-            btn.textContent = subtype;
-            subtypeFilters.appendChild(btn);
-
-            // Event listener for subtype button
-            btn.addEventListener('click', function () {
-                document.getElementById('item-details').classList.remove('hidden');
-            });
-        });
+        const sortedItemsContainer = document.getElementById('sorted-items');
+        sortedItemsContainer.innerHTML = sortedItems.map(item => `<p>${item}</p>`).join('');
     }
 
-    // List item button
-    listBtn.addEventListener('click', function () {
-        const itemName = document.getElementById('item-name').value;
-        const itemTrait = document.getElementById('item-trait').value;
-        if (itemName) {
-            const item = document.createElement('div');
-            item.textContent = `${itemName} (${itemTrait})`;
-            itemsListedContent.appendChild(item);
-        }
-    });
+    // Example of listing items (to be dynamically done in real usage)
+    const itemList = [
+        'Sword of Power',
+        'Greatsword of Destruction',
+        'Amulet of the Sun'
+    ];
 
-    // Collapsible bar for items listed
-    collapsibleBtn.addEventListener('click', function () {
-        this.classList.toggle('active');
-        const content = this.nextElementSibling;
-        if (content.style.display === 'block') {
-            content.style.display = 'none';
-        } else {
-            content.style.display = 'block';
-        }
-    });
+    itemsContent.innerHTML = itemList.map(item => `<p>${item}</p>`).join('');
+
 });
