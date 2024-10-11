@@ -1,114 +1,92 @@
 body {
-    background-color: #1c1c1c;
-    color: #d4af37; /* Dark golden color */
-    font-family: 'Diablo', sans-serif;
+    background-color: #1f1f1f; /* Dark Gothic background */
+    color: #d4af37; /* Diablo-inspired dark golden color */
+    font-family: 'Diablo', sans-serif; /* Custom font */
 }
 
 .container {
-    max-width: 1200px;
+    width: 90%;
     margin: 0 auto;
-    padding: 20px;
-}
-
-header h1 {
-    text-align: center;
-    font-size: 3em;
 }
 
 button {
-    background-color: #700000;
+    background-color: #a52a2a;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px;
+    margin: 5px;
     cursor: pointer;
-    font-size: 1.2em;
-    margin-bottom: 10px;
+    font-size: 14px;
 }
 
 button:hover {
-    background-color: #900000;
+    background-color: #8b0000;
 }
 
 .hidden {
     display: none;
 }
 
-#admin-panel {
-    background-color: #2e2e2e;
-    color: #d4af37;
-    border: 1px solid #700000;
-    padding: 20px;
+.admin-header {
     display: flex;
-    justify-content: space-between;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    right: 20px;
+    justify-content: flex-end;
 }
 
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
+.admin-left-panel {
+    width: 200px;
+    float: left;
 }
 
-.panel-left {
-    flex: 1;
-}
-
-.admin-button {
+.admin-btn {
     display: block;
+    width: 100%;
     margin-bottom: 10px;
 }
 
-.panel-middle {
-    flex: 2;
-    background-color: #1a1a1a;
-    padding: 20px;
-    min-height: 200px;
+.admin-middle-panel {
+    float: left;
+    width: 50%;
+    min-height: 300px;
+    border: 1px solid #d4af37;
 }
 
-.panel-right {
-    flex: 1;
+.admin-right-panel {
+    float: right;
+    width: 200px;
 }
 
-.build-icons {
+#build-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#build-icons {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 10px;
 }
 
 .build-icon {
-    width: 50px;
-    height: 50px;
-    filter: grayscale(100%);
+    width: 32px;
+    height: 32px;
     cursor: pointer;
 }
 
-.build-icon.selected {
-    filter: none;
+.build-icon:hover {
     border: 2px solid #d4af37;
 }
 
 .collapsible {
-    margin: 20px 0;
+    margin-top: 20px;
 }
 
-.collapsible-btn {
-    background-color: #700000;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
+#collapse-items-btn {
+    width: 100%;
+    background-color: #a52a2a;
 }
 
-.collapsible-content {
-    display: none;
-    background-color: #1a1a1a;
+.content {
     padding: 20px;
-    border: 1px solid #700000;
-}
-
-.collapsible-content.active {
-    display: block;
+    border: 1px solid #d4af37;
+    background-color: #2f2f2f;
 }
