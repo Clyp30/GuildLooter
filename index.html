@@ -43,26 +43,37 @@
         </form>
     </div>
 
-    <!-- Items Listed Section -->
+    <!-- Items Listed Section with Collapsible Navigation -->
     <div id="items-listed-container">
         <h3>Items Listed</h3>
-        <div class="items-list">
-            <span>Morokai's Greatblade of Corruption</span>
-            <button class="request-btn">Request</button>
+        <div class="collapsible-container">
+            <!-- Example Item 1 -->
+            <button class="collapsible">Morokai's Greatblade of Corruption</button>
+            <div class="collapsible-content">
+                <h4>Real-time Requests</h4>
+                <div class="request-list">
+                    <p>In-game Name: <span class="user-name">Player1</span></p>
+                    <p>Reputation: <span class="user-reputation">5000</span></p>
+                    <p>Build: <span class="user-build">Greatsword</span></p>
+                </div>
+                <div class="request-list">
+                    <p>In-game Name: <span class="user-name">Player2</span></p>
+                    <p>Reputation: <span class="user-reputation">4500</span></p>
+                    <p>Build: <span class="user-build">Sword</span></p>
+                </div>
+            </div>
+            <!-- Example Item 2 -->
+            <button class="collapsible">Duke Magna's Provoking Warblade</button>
+            <div class="collapsible-content">
+                <h4>Real-time Requests</h4>
+                <div class="request-list">
+                    <p>In-game Name: <span class="user-name">Player3</span></p>
+                    <p>Reputation: <span class="user-reputation">6000</span></p>
+                    <p>Build: <span class="user-build">Wand</span></p>
+                </div>
+            </div>
+            <!-- More items can be added here -->
         </div>
-        <div class="items-list">
-            <span>Duke Magna's Provoking Warblade</span>
-            <button class="request-btn">Request</button>
-        </div>
-        <div class="items-list">
-            <span>Heroic Broadsword of the Resistance</span>
-            <button class="request-btn">Request</button>
-        </div>
-        <div class="items-list">
-            <span>Greatsword of the Banshee</span>
-            <button class="request-btn">Request</button>
-        </div>
-        <!-- More items can be added as needed -->
     </div>
 
     <!-- Admin Panel Access Button -->
