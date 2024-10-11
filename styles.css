@@ -1,16 +1,16 @@
 body {
-    background-color: #0D0D0D; /* Dark fallback */
-    background-image: url('images/diablo2-bg.jpg'); /* Add your Diablo-inspired background image here */
+    background-color: #0D0D0D; /* Dark background */
+    background-image: url('images/diablo2-bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: #D4AF37; /* Muted golden text */
-    font-family: 'Palatino Linotype', 'Book Antiqua', serif; /* Gothic font */
+    font-family: 'Palatino Linotype', 'Book Antiqua', serif;
     text-align: center;
 }
 
 h1, h3, h4 {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Gothic-style shadow */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8); /* Shadow effect */
 }
 
 button {
@@ -23,11 +23,11 @@ button {
 }
 
 button:hover {
-    background-color: #A00000; /* Brighter on hover */
+    background-color: #A00000; /* Bright red on hover */
 }
 
 #admin-panel {
-    background: rgba(0, 0, 0, 0.9); /* Dark, semi-transparent panel */
+    background: rgba(0, 0, 0, 0.9); /* Semi-transparent */
     border: 2px solid #D4AF37;
     padding: 20px;
     margin-top: 20px;
@@ -84,28 +84,49 @@ h3, h4 {
     color: #D4AF37;
 }
 
-#submit-request {
-    position: absolute;
-    left: 20px; /* Move it more to the left */
-}
-
 .items-list {
     color: #D4AF37;
     margin: 10px;
-    background: rgba(50, 50, 50, 0.7); /* Dark list background */
+    background: rgba(50, 50, 50, 0.7); /* Darker background for lists */
     padding: 10px;
     border: 1px solid #4A0000;
 }
 
-.items-list .request-btn {
-    float: right; /* Float the 'Request' button to the right */
+/* Collapsible Buttons */
+.collapsible {
     background-color: #8B0000;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
     color: #FFD700;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    width: 100%;
+    border: 1px solid #4A0000;
 }
 
-.items-list .request-btn:hover {
-    background-color: #A00000;
+.collapsible:hover {
+    background-color: #A00000; /* Bright red on hover */
+}
+
+.collapsible-content {
+    background-color: rgba(50, 50, 50, 0.9);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    margin-bottom: 10px;
+}
+
+.collapsible-content .request-list {
+    padding: 10px;
+    color: #D4AF37;
+    text-align: left;
+    border-bottom: 1px solid #4A0000;
+}
+
+/* Open state for collapsible content */
+.active .collapsible-content {
+    max-height: 300px; /* Adjust height based on content */
+    transition: max-height 0.3s ease-in;
 }
