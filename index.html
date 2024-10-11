@@ -7,61 +7,59 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Guild Loot Distribution</h1>
-        <button id="admin-login-btn">Admin Login</button>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Guild Loot Distribution</h1>
+            <button id="admin-login">Admin Login</button>
+        </header>
 
-    <div id="admin-panel" class="admin-panel" style="display: none;">
-        <div id="admin-panel-content">
-            <button id="close-admin-btn" class="close-btn">X</button>
-            <div class="admin-categories">
-                <button id="weapons-btn">Weapons</button>
-                <button id="armor-btn">Armor</button>
-                <button id="accessories-btn">Accessories</button>
+        <!-- Collapsible Items Listed Section -->
+        <div class="collapsible" id="items-listed-bar">Items Listed</div>
+        <div class="collapsible-content" id="items-list-content"></div>
+
+        <!-- User Build Section -->
+        <div class="build-section">
+            <h2>Select Your Build</h2>
+            <div class="build-icons">
+                <img src="path/to/staff.png" alt="Staff" class="build-icon" data-build="Staff">
+                <img src="path/to/daggers.png" alt="Daggers" class="build-icon" data-build="Daggers">
+                <img src="path/to/xbox.png" alt="Xbox" class="build-icon" data-build="Xbox">
+                <img src="path/to/longbow.png" alt="Longbow" class="build-icon" data-build="Longbow">
+                <img src="path/to/wand.png" alt="Wand" class="build-icon" data-build="Wand">
+                <img src="path/to/greatsword.png" alt="Greatsword" class="build-icon" data-build="Greatsword">
+                <img src="path/to/shield.png" alt="Shield" class="build-icon" data-build="Shield">
+                <img src="path/to/sword.png" alt="Sword" class="build-icon" data-build="Sword">
             </div>
-            <div id="item-list" class="item-list"></div>
-            <div id="rarity-options" class="rarity-options"></div>
-            <input type="text" id="item-search" placeholder="Search items...">
+            <button id="submit-build" disabled>Submit Your Build</button>
         </div>
     </div>
 
-    <main>
-        <section id="items-section">
-            <h2>Items Listed</h2>
-            <div class="collapsible-section">
-                <!-- Items listed by the admin will be dynamically added here -->
-            </div>
-        </section>
-
-        <section id="user-form-section">
-            <h2>Submit Your Request</h2>
-            <form id="user-form">
-                <label for="ingame-name">In-game Name:</label>
-                <input type="text" id="ingame-name" required>
-
-                <label for="reputation">Reputation:</label>
-                <input type="number" id="reputation" required>
-
-                <label for="usage">Item Usage:</label>
-                <select id="usage">
-                    <option value="equip">Equip</option>
-                    <option value="trait">Trait</option>
-                    <option value="copy">Copy</option>
-                    <option value="lithograph">Lithograph</option>
-                </select>
-
-                <label for="build">Build:</label>
-                <div id="build-icons">
-                    <img src="icons/greatsword.png" alt="Greatsword" class="build-icon" data-build="Greatsword">
-                    <img src="icons/staff.png" alt="Staff" class="build-icon" data-build="Staff">
-                    <!-- Add other build icons here -->
+    <!-- Admin Panel -->
+    <div id="admin-panel" class="hidden">
+        <button class="close-admin-panel">X</button>
+        <div class="admin-section">
+            <div class="left-panel">
+                <button id="weapon-btn">Weapons</button>
+                <button id="armor-btn">Armor</button>
+                <button id="accessories-btn">Accessories</button>
+                <div id="weapon-options" class="hidden">
+                    <button class="weapon-type" data-type="Greatsword">Greatsword</button>
+                    <button class="weapon-type" data-type="Sword">Sword</button>
+                    <button class="weapon-type" data-type="Dagger">Dagger</button>
+                    <button class="weapon-type" data-type="Crossbow">Crossbow</button>
+                    <button class="weapon-type" data-type="Longbow">Longbow</button>
+                    <button class="weapon-type" data-type="Staff">Staff</button>
+                    <button class="weapon-type" data-type="Wand">Wand</button>
                 </div>
-
-                <button type="submit" id="submit-request-btn">Request</button>
-            </form>
-        </section>
-    </main>
+            </div>
+            <div class="middle-panel" id="item-details">
+                <!-- Item details will appear here dynamically -->
+            </div>
+            <div class="right-panel">
+                <input type="text" id="search-bar" placeholder="Search for items...">
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
