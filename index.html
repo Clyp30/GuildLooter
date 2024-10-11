@@ -5,47 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guild Loot Distribution</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div id="items-listed" class="collapsible">
-            <button id="collapse-items-btn">Items Listed</button>
-            <div id="item-list-content" class="content hidden">
-                <!-- Listed items will appear here -->
-            </div>
+    <div class="admin-panel">
+        <div class="admin-header">
+            <button class="admin-close" id="close-admin">X</button>
+            <input type="text" id="searchItems" placeholder="Search items" class="search-bar">
         </div>
-
-        <div id="user-input-section">
-            <h3>User Information</h3>
-            <label for="in-game-name">In-Game Name</label>
-            <input type="text" id="in-game-name" placeholder="Enter your in-game name">
-
-            <label for="reputation">Reputation</label>
-            <input type="number" id="reputation" placeholder="Enter your reputation">
-
-            <label for="usage">Usage</label>
-            <select id="usage">
-                <option value="equip">Equip</option>
-                <option value="copy">Copy</option>
-                <option value="trait">Trait</option>
-                <option value="litho">Litho</option>
-            </select>
-            
-            <h3>Select Your Build (Choose 2 Weapons)</h3>
-            <div id="build-icons">
-                <img src="icons/staff.png" alt="Staff" class="build-icon" data-build="Staff">
-                <img src="icons/daggers.png" alt="Daggers" class="build-icon" data-build="Daggers">
-                <img src="icons/xbox.png" alt="Xbox" class="build-icon" data-build="Xbox">
-                <img src="icons/longbow.png" alt="Longbow" class="build-icon" data-build="Longbow">
-                <img src="icons/wand.png" alt="Wand" class="build-icon" data-build="Wand">
-                <img src="icons/greatsword.png" alt="Greatsword" class="build-icon" data-build="Greatsword">
-                <img src="icons/shield.png" alt="Shield" class="build-icon" data-build="Shield">
-                <img src="icons/sword.png" alt="Sword" class="build-icon" data-build="Sword">
+        <div class="panel-body">
+            <div class="user-section">
+                <div>
+                    <input type="text" id="ingame-name" placeholder="In-game name">
+                    <input type="number" id="reputation" placeholder="Reputation">
+                </div>
+                <div>
+                    <label for="usage">Usage:</label>
+                    <select id="usage">
+                        <option value="equip">Equip</option>
+                        <option value="copy">Copy</option>
+                        <option value="trait">Trait</option>
+                        <option value="litho">Litho</option>
+                    </select>
+                </div>
+                <div id="build-selection">
+                    <label for="build">Select Build:</label>
+                    <div class="build-icons">
+                        <img src="staff.png" id="staff" class="build-icon" alt="Staff">
+                        <img src="dagger.png" id="dagger" class="build-icon" alt="Dagger">
+                        <img src="xbox.png" id="xbox" class="build-icon" alt="Xbox">
+                        <img src="longbow.png" id="longbow" class="build-icon" alt="Longbow">
+                        <img src="wand.png" id="wand" class="build-icon" alt="Wand">
+                        <img src="greatsword.png" id="greatsword" class="build-icon" alt="Greatsword">
+                        <img src="shield.png" id="shield" class="build-icon" alt="Shield">
+                        <img src="sword.png" id="sword" class="build-icon" alt="Sword">
+                    </div>
+                </div>
             </div>
-
-            <button id="submit-build" class="disabled" disabled>Submit Your Build</button>
+            <div class="items-listed">
+                <button class="collapsible" id="collapsible-items-listed">Items Listed</button>
+                <div class="content" id="items-content">
+                    <!-- Listed items will be shown here -->
+                </div>
+            </div>
         </div>
     </div>
+
+    <button id="admin-login">Admin Login</button>
+
+    <script src="script.js"></script>
 </body>
 </html>
