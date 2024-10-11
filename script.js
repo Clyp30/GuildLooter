@@ -1,57 +1,44 @@
-document.getElementById('admin-login-btn').addEventListener('click', function () {
-    const password = prompt('Enter admin password:');
-    if (password === 'admin123') {
-        document.getElementById('admin-panel').classList.remove('hidden');
-    } else {
-        alert('Incorrect password!');
-    }
-});
-
-document.getElementById('close-admin-panel').addEventListener('click', function () {
-    document.getElementById('admin-panel').classList.add('hidden');
-});
-
-document.getElementById('weapon-btn').addEventListener('click', function () {
-    showSubtypes('weapon');
-});
-
-document.getElementById('armor-btn').addEventListener('click', function () {
-    showSubtypes('armor');
-});
-
-document.getElementById('accessory-btn').addEventListener('click', function () {
-    showSubtypes('accessory');
-});
-
-function showSubtypes(type) {
-    const subtypesContainer = document.getElementById('subtypes-container');
-    subtypesContainer.classList.remove('hidden');
-    let subtypes = [];
-    if (type === 'weapon') {
-        subtypes = ['Staff', 'Daggers', 'Xbox', 'Longbow', 'Wand', 'Greatsword', 'Shield', 'Sword'];
-    } else if (type === 'armor') {
-        subtypes = ['Helmet', 'Chestplate', 'Gauntlets', 'Boots'];
-    } else if (type === 'accessory') {
-        subtypes = ['Ring', 'Belt', 'Necklace'];
-    }
-
-    subtypesContainer.innerHTML = '';
-    subtypes.forEach(subtype => {
-        const btn = document.createElement('button');
-        btn.innerText = subtype;
-        subtypesContainer.appendChild(btn);
-    });
-}
-
 document.getElementById('collapse-items-btn').addEventListener('click', function () {
     const content = document.getElementById('item-list-content');
     content.classList.toggle('hidden');
 });
 
+const selectedBuilds = [];
 document.getElementById('build-icons').addEventListener('click', function (event) {
-    if (event.target.classList.contains('build-icon')) {
-        event.target.classList.toggle('selected');
+    const target = event.target;
+    if (target.classList.contains('build-icon')) {
+        const buildName = target.getAttribute('data-build');
+        if (selectedBuilds.includes(buildName)) {
+            target.classList.remove('selected');
+            selectedBuilds.splice(selectedBuilds.indexOf(buildName), 1);
+        } else if (selectedBuilds.length < 2) {
+            target.classList.add('selected');
+            selectedBuilds.push(buildName);
+        } else {
+            alert("Only 2 weapons of choice allowed.");
+        }
+    }
+
+    // Enable the submit button if 2 builds are selected
+    const submitButton = document.getElementById('submit-build');
+    if (selectedBuilds.length === 2) {
+        submitButton.classList.remove('disabled');
+        submitButton.disabled = false;
+    } else {
+        submitButton.classList.add('disabled');
+        submitButton.disabled = true;
     }
 });
 
-// The rest of the code for managing listing requests and item countdown timers
+// Implementing rules for item requests (rarity limitations per day)
+const userLimits = {
+    rare: 2,
+    purple: 1
+};
+
+function resetDailyLimits() {
+    userLimits.rare = 2;
+    userLimits.purple = 1;
+}
+
+setInterval(resetDailyLimits, 24 * 60 * 60 * 1000); // Reset daily limits every 24 hours
