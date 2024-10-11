@@ -1,95 +1,68 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const adminLoginBtn = document.getElementById('admin-login');
-    const adminPanel = document.getElementById('admin-panel');
-    const closeAdminBtn = document.getElementById('close-admin');
-    const collapseBar = document.getElementById('collapse-bar');
-    const itemsContent = document.getElementById('items-content');
-    const filterWeaponBtn = document.getElementById('filter-weapon');
-    const filterArmorBtn = document.getElementById('filter-armor');
-    const filterAccessoryBtn = document.getElementById('filter-accessory');
-    const buildIcons = document.querySelectorAll('.build-icon');
-    let selectedBuilds = [];
-    let adminLoggedIn = false;
-
-    // Admin Login System
-    adminLoginBtn.addEventListener('click', () => {
-        if (!adminLoggedIn) {
-            const password = prompt('Enter Admin Password:');
-            if (password === 'admin123') {
-                adminLoggedIn = true;
-                adminPanel.classList.remove('hidden');
-            } else {
-                alert('Incorrect Password');
-            }
-        } else {
-            adminPanel.classList.remove('hidden');
-        }
-    });
-
-    // Close Admin Panel
-    closeAdminBtn.addEventListener('click', () => {
-        adminPanel.classList.add('hidden');
-    });
-
-    // Collapsible Items Listed Bar
-    collapseBar.addEventListener('click', () => {
-        itemsContent.classList.toggle('collapse');
-    });
-
-    // Build Icons Selection
-    buildIcons.forEach(icon => {
-        icon.addEventListener('click', () => {
-            if (selectedBuilds.length < 2 || icon.classList.contains('selected')) {
-                icon.classList.toggle('selected');
-                if (icon.classList.contains('selected')) {
-                    selectedBuilds.push(icon.alt);
-                } else {
-                    selectedBuilds = selectedBuilds.filter(build => build !== icon.alt);
-                }
-            } else {
-                alert('You can only select up to 2 builds.');
-            }
-        });
-    });
-
-    // Admin Panel Item Sorting
-    filterWeaponBtn.addEventListener('click', () => {
-        displayItemsByType('weapon');
-    });
-
-    filterArmorBtn.addEventListener('click', () => {
-        displayItemsByType('armor');
-    });
-
-    filterAccessoryBtn.addEventListener('click', () => {
-        displayItemsByType('accessory');
-    });
-
-    // Function to display items based on type
-    function displayItemsByType(type) {
-        let sortedItems = [];
-        switch (type) {
-            case 'weapon':
-                sortedItems = ['Sword', 'Dagger', 'Staff', 'Shield', 'Greatsword'];
-                break;
-            case 'armor':
-                sortedItems = ['Helmet', 'Chestplate', 'Gloves', 'Boots'];
-                break;
-            case 'accessory':
-                sortedItems = ['Ring', 'Belt', 'Amulet'];
-                break;
-        }
-        const sortedItemsContainer = document.getElementById('sorted-items');
-        sortedItemsContainer.innerHTML = sortedItems.map(item => `<p>${item}</p>`).join('');
+document.getElementById('admin-login').addEventListener('click', function() {
+    let password = prompt("Enter Admin Password:");
+    if (password === "admin123") {
+        document.getElementById('admin-panel').classList.remove('hidden');
+        sessionStorage.setItem('adminAuthenticated', true);
+    } else {
+        alert('Incorrect password.');
     }
+});
 
-    // Example of listing items (to be dynamically done in real usage)
-    const itemList = [
-        'Sword of Power',
-        'Greatsword of Destruction',
-        'Amulet of the Sun'
-    ];
+if (sessionStorage.getItem('adminAuthenticated')) {
+    document.getElementById('admin-panel').classList.remove('hidden');
+}
 
-    itemsContent.innerHTML = itemList.map(item => `<p>${item}</p>`).join('');
+document.getElementById('admin-close').addEventListener('click', function() {
+    document.getElementById('admin-panel').classList.add('hidden');
+});
 
+document.getElementById('weapon-btn').addEventListener('click', function() {
+    showSubtypes(['Staff', 'Daggers', 'Xbox', 'Longbow', 'Wand', 'Greatsword', 'Shield', 'Sword']);
+});
+
+document.getElementById('armor-btn').addEventListener('click', function() {
+    showSubtypes(['Helmet', 'Chestplate', 'Gauntlets', 'Leggings', 'Boots']);
+});
+
+document.getElementById('accessory-btn').addEventListener('click', function() {
+    showSubtypes(['Ring', 'Belt', 'Amulet']);
+});
+
+function showSubtypes(subtypes) {
+    let itemSelection = document.getElementById('item-selection');
+    itemSelection.innerHTML = '';
+    subtypes.forEach(function(subtype) {
+        let button = document.createElement('button');
+        button.textContent = subtype;
+        button.classList.add('subtype-button');
+        button.addEventListener('click', function() {
+            listItems(subtype);
+        });
+        itemSelection.appendChild(button);
+    });
+}
+
+function listItems(subtype) {
+    let items = [];
+    switch (subtype) {
+        case 'Greatsword':
+            items = ['Morokai\'s Greatblade', 'Duke Magna\'s Warblade', 'Heroic Broadsword'];
+            break;
+        // Add more cases for other subtypes.
+    }
+    let itemSelection = document.getElementById('item-selection');
+    itemSelection.innerHTML = '';
+    items.forEach(function(item) {
+        let div = document.createElement('div');
+        div.textContent = item;
+        itemSelection.appendChild(div);
+    });
+}
+
+// Collapsible functionality for Items Listed
+let collapsibleBtn = document.querySelector('.collapsible-btn');
+let collapsibleContent = document.querySelector('.collapsible-content');
+
+collapsibleBtn.addEventListener('click', function() {
+    collapsibleContent.classList.toggle('active');
 });
