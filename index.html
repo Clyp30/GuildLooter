@@ -7,95 +7,62 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Guild Loot Distribution</h1>
+    <header>
+        <h1>Guild Loot Distribution</h1>
+        <button id="admin-login-btn">Admin Login</button>
+    </header>
 
-    <!-- Main User Section -->
-    <div id="user-form-container">
-        <h3>Submit Your Build</h3>
-        <p class="build-title">Select Your Build:</p>
-        <div class="build-options">
-            <span class="build-icon"><img src="icons/staff.png" alt="Staff"></span>
-            <span class="build-icon"><img src="icons/daggers.png" alt="Daggers"></span>
-            <span class="build-icon"><img src="icons/xbox.png" alt="Xbox"></span>
-            <span class="build-icon"><img src="icons/longbow.png" alt="Longbow"></span>
-            <span class="build-icon"><img src="icons/wand.png" alt="Wand"></span>
-            <span class="build-icon"><img src="icons/greatsword.png" alt="Greatsword"></span>
-            <span class="build-icon"><img src="icons/shield.png" alt="Shield"></span>
-            <span class="build-icon"><img src="icons/sword.png" alt="Sword"></span>
-        </div>
-
-        <form id="user-form">
-            <label for="ingame-name">In-game Name:</label>
-            <input type="text" id="ingame-name" name="ingame-name" placeholder="Enter your in-game name">
-            <br>
-            <label for="reputation">Reputation:</label>
-            <input type="number" id="reputation" name="reputation" placeholder="Enter your reputation">
-            <br>
-            <label for="usage">Select Usage:</label>
-            <select id="usage" name="usage">
-                <option value="equip">Equip (+3000)</option>
-                <option value="trait">Trait (+2000)</option>
-                <option value="copy">Copy (+1000)</option>
-                <option value="lithograph">Lithograph (+500)</option>
-            </select>
-            <br>
-            <input type="submit" value="Submit Build">
-        </form>
-    </div>
-
-    <!-- Items Listed Section with Collapsible Navigation -->
-    <div id="items-listed-container">
-        <h3>Items Listed</h3>
-        <div class="collapsible-container">
-            <!-- Example Item 1 -->
-            <button class="collapsible">Morokai's Greatblade of Corruption</button>
-            <div class="collapsible-content">
-                <h4>Real-time Requests</h4>
-                <div class="request-list">
-                    <p>In-game Name: <span class="user-name">Player1</span></p>
-                    <p>Reputation: <span class="user-reputation">5000</span></p>
-                    <p>Build: <span class="user-build">Greatsword</span></p>
-                </div>
-                <div class="request-list">
-                    <p>In-game Name: <span class="user-name">Player2</span></p>
-                    <p>Reputation: <span class="user-reputation">4500</span></p>
-                    <p>Build: <span class="user-build">Sword</span></p>
-                </div>
+    <div id="admin-panel" class="admin-panel" style="display: none;">
+        <div id="admin-panel-content">
+            <button id="close-admin-btn" class="close-btn">X</button>
+            <div class="admin-categories">
+                <button id="weapons-btn">Weapons</button>
+                <button id="armor-btn">Armor</button>
+                <button id="accessories-btn">Accessories</button>
             </div>
-            <!-- Example Item 2 -->
-            <button class="collapsible">Duke Magna's Provoking Warblade</button>
-            <div class="collapsible-content">
-                <h4>Real-time Requests</h4>
-                <div class="request-list">
-                    <p>In-game Name: <span class="user-name">Player3</span></p>
-                    <p>Reputation: <span class="user-reputation">6000</span></p>
-                    <p>Build: <span class="user-build">Wand</span></p>
-                </div>
+            <div id="item-list" class="item-list"></div>
+            <div id="rarity-options" class="rarity-options"></div>
+            <input type="text" id="item-search" placeholder="Search items...">
+        </div>
+    </div>
+
+    <main>
+        <section id="items-section">
+            <h2>Items Listed</h2>
+            <div class="collapsible-section">
+                <!-- Items listed by the admin will be dynamically added here -->
             </div>
-            <!-- More items can be added here -->
-        </div>
-    </div>
+        </section>
 
-    <!-- Admin Panel Access Button -->
-    <button id="admin-login-btn">Admin Login</button>
+        <section id="user-form-section">
+            <h2>Submit Your Request</h2>
+            <form id="user-form">
+                <label for="ingame-name">In-game Name:</label>
+                <input type="text" id="ingame-name" required>
 
-    <!-- Admin Panel (Initially hidden) -->
-    <div id="admin-panel" style="display: none;">
-        <h3>Admin Panel</h3>
-        <div class="category-buttons">
-            <button id="weapons-btn">Weapons</button>
-            <button id="armor-btn">Armor</button>
-            <button id="accessories-btn">Accessories</button>
-        </div>
+                <label for="reputation">Reputation:</label>
+                <input type="number" id="reputation" required>
 
-        <div id="item-list"></div>
-        <div id="rarity-options"></div>
+                <label for="usage">Item Usage:</label>
+                <select id="usage">
+                    <option value="equip">Equip</option>
+                    <option value="trait">Trait</option>
+                    <option value="copy">Copy</option>
+                    <option value="lithograph">Lithograph</option>
+                </select>
 
-        <input type="text" id="item-search-bar" placeholder="Search items...">
-        <button id="close-admin-btn">X</button>
-    </div>
+                <label for="build">Build:</label>
+                <div id="build-icons">
+                    <img src="icons/greatsword.png" alt="Greatsword" class="build-icon" data-build="Greatsword">
+                    <img src="icons/staff.png" alt="Staff" class="build-icon" data-build="Staff">
+                    <!-- Add other build icons here -->
+                </div>
 
-    <!-- Script -->
+                <button type="submit" id="submit-request-btn">Request</button>
+            </form>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
