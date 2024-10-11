@@ -1,118 +1,71 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Admin login functionality
-    const adminLoginBtn = document.getElementById('admin-login-btn');
+    const adminLogin = document.getElementById('admin-login');
     const adminPanel = document.getElementById('admin-panel');
-    const closeAdminBtn = document.getElementById('close-admin-btn');
-    const password = 'admin123'; // Set your admin password here
+    const weaponBtn = document.getElementById('weapon-btn');
+    const armorBtn = document.getElementById('armor-btn');
+    const accessoriesBtn = document.getElementById('accessories-btn');
+    const weaponOptions = document.getElementById('weapon-options');
+    const itemDetails = document.getElementById('item-details');
+    const collapsibleBar = document.getElementById('items-listed-bar');
+    const itemsListContent = document.getElementById('items-list-content');
+    const buildIcons = document.querySelectorAll('.build-icon');
+    const submitBuild = document.getElementById('submit-build');
+    let selectedBuild = [];
+    let itemSelected = false;
 
-    adminLoginBtn.addEventListener('click', function () {
-        const enteredPassword = prompt('Enter Admin Password:');
-        if (enteredPassword === password) {
+    // Admin login
+    adminLogin.addEventListener('click', function () {
+        const password = prompt("Enter admin password:");
+        if (password === 'admin123') {
             adminPanel.style.display = 'block';
         } else {
-            alert('Incorrect password.');
+            alert('Incorrect password!');
         }
     });
 
-    closeAdminBtn.addEventListener('click', function () {
+    // Close admin panel
+    document.querySelector('.close-admin-panel').addEventListener('click', function () {
         adminPanel.style.display = 'none';
     });
 
-    // Collapsible functionality for listed items
-    const collapsibleSection = document.querySelector('.collapsible-section');
+    // Collapsible "Items Listed" bar
+    collapsibleBar.addEventListener('click', function () {
+        this.classList.toggle('active');
+        itemsListContent.classList.toggle('active');
+    });
 
-    function addCollapsibleItem(itemName) {
-        const collapsible = document.createElement('button');
-        collapsible.classList.add('collapsible');
-        collapsible.innerText = itemName;
-
-        const collapsibleContent = document.createElement('div');
-        collapsibleContent.classList.add('collapsible-content');
-        collapsibleContent.innerHTML = '<p>No requests yet.</p>';
-
-        collapsibleSection.appendChild(collapsible);
-        collapsibleSection.appendChild(collapsibleContent);
-
-        collapsible.addEventListener('click', function () {
-            this.classList.toggle('active');
-            const content = this.nextElementSibling;
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + 'px';
-            }
-        });
+    // Enable submitting build after selecting an item
+    function checkBuildAndItem() {
+        if (selectedBuild.length > 0 && itemSelected) {
+            submitBuild.classList.add('active');
+            submitBuild.disabled = false;
+        }
     }
 
-    // Dynamic item adding by admin
-    const itemList = [
-        "Morokai's Greatblade of Corruption",
-        "Duke Magna's Provoking Warblade",
-        "Heroic Broadsword of the Resistance",
-        "Greatsword of the Banshee",
-        "Adentus's Gargantuan Greatsword",
-        "Junobote's Juggernaut Warblade",
-        "Tevent's Warblade of Despair"
-    ];
-
-    const itemContainer = document.getElementById('item-list');
-    const rarityOptions = document.getElementById('rarity-options');
-
-    const weaponsBtn = document.getElementById('weapons-btn');
-    weaponsBtn.addEventListener('click', function () {
-        itemContainer.innerHTML = '';
-        rarityOptions.innerHTML = '';
-        itemList.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.innerHTML = item;
-            itemElement.classList.add('item-entry');
-            itemContainer.appendChild(itemElement);
-            addCollapsibleItem(item);
-        });
-    });
-
-    // Example function to handle form submission (user request submission)
-    const userForm = document.getElementById('user-form');
-    userForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const inGameName = document.getElementById('ingame-name').value;
-        const reputation = parseInt(document.getElementById('reputation').value, 10);
-        const usage = document.getElementById('usage').value;
-
-        let additionalRep = 0;
-        if (usage === 'equip') additionalRep = 3000;
-        else if (usage === 'trait') additionalRep = 2000;
-        else if (usage === 'copy') additionalRep = 1000;
-        else if (usage === 'lithograph') additionalRep = 500;
-
-        const totalReputation = reputation + additionalRep;
-
-        const buildIcon = document.querySelector('.build-icon.selected');
-        const build = buildIcon ? buildIcon.getAttribute('data-build') : 'Unknown';
-
-        const requestDiv = document.createElement('div');
-        requestDiv.classList.add('request-list');
-        requestDiv.innerHTML = `
-            <p>In-game Name: ${inGameName}</p>
-            <p>Reputation: ${totalReputation}</p>
-            <p>Build: ${build}</p>
-        `;
-
-        // Add to the respective item's collapsible content
-        const selectedItemContent = document.querySelector('.collapsible.active + .collapsible-content');
-        if (selectedItemContent) {
-            selectedItemContent.innerHTML = ''; // Clear existing text
-            selectedItemContent.appendChild(requestDiv);
-        }
-    });
-
-    // Handle build icon selection
-    const buildIcons = document.querySelectorAll('.build-icon');
+    // Build icon selection
     buildIcons.forEach(icon => {
         icon.addEventListener('click', function () {
-            buildIcons.forEach(icon => icon.classList.remove('selected'));
-            this.classList.add('selected');
+            if (selectedBuild.includes(this.dataset.build)) {
+                selectedBuild = selectedBuild.filter(b => b !== this.dataset.build);
+                this.classList.remove('selected');
+            } else if (selectedBuild.length < 2) {
+                selectedBuild.push(this.dataset.build);
+                this.classList.add('selected');
+            }
+            checkBuildAndItem();
         });
     });
-});
+
+    // Show weapon options on admin panel
+    weaponBtn.addEventListener('click', function () {
+        weaponOptions.classList.toggle('hidden');
+        armorBtn.style.display = 'none';
+        accessoriesBtn.style.display = 'none';
+    });
+
+    // Add real-time request
+    function addRequest(inGameName, reputation, build) {
+        const requestDiv = document.createElement('div');
+        requestDiv.innerHTML = `
+            <p>In-Game Name: ${inGameName}</p>
+            <p>Re
