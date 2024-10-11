@@ -1,68 +1,57 @@
-document.getElementById('admin-login').addEventListener('click', function() {
-    let password = prompt("Enter Admin Password:");
-    if (password === "admin123") {
+document.getElementById('admin-login-btn').addEventListener('click', function () {
+    const password = prompt('Enter admin password:');
+    if (password === 'admin123') {
         document.getElementById('admin-panel').classList.remove('hidden');
-        sessionStorage.setItem('adminAuthenticated', true);
     } else {
-        alert('Incorrect password.');
+        alert('Incorrect password!');
     }
 });
 
-if (sessionStorage.getItem('adminAuthenticated')) {
-    document.getElementById('admin-panel').classList.remove('hidden');
-}
-
-document.getElementById('admin-close').addEventListener('click', function() {
+document.getElementById('close-admin-panel').addEventListener('click', function () {
     document.getElementById('admin-panel').classList.add('hidden');
 });
 
-document.getElementById('weapon-btn').addEventListener('click', function() {
-    showSubtypes(['Staff', 'Daggers', 'Xbox', 'Longbow', 'Wand', 'Greatsword', 'Shield', 'Sword']);
+document.getElementById('weapon-btn').addEventListener('click', function () {
+    showSubtypes('weapon');
 });
 
-document.getElementById('armor-btn').addEventListener('click', function() {
-    showSubtypes(['Helmet', 'Chestplate', 'Gauntlets', 'Leggings', 'Boots']);
+document.getElementById('armor-btn').addEventListener('click', function () {
+    showSubtypes('armor');
 });
 
-document.getElementById('accessory-btn').addEventListener('click', function() {
-    showSubtypes(['Ring', 'Belt', 'Amulet']);
+document.getElementById('accessory-btn').addEventListener('click', function () {
+    showSubtypes('accessory');
 });
 
-function showSubtypes(subtypes) {
-    let itemSelection = document.getElementById('item-selection');
-    itemSelection.innerHTML = '';
-    subtypes.forEach(function(subtype) {
-        let button = document.createElement('button');
-        button.textContent = subtype;
-        button.classList.add('subtype-button');
-        button.addEventListener('click', function() {
-            listItems(subtype);
-        });
-        itemSelection.appendChild(button);
-    });
-}
-
-function listItems(subtype) {
-    let items = [];
-    switch (subtype) {
-        case 'Greatsword':
-            items = ['Morokai\'s Greatblade', 'Duke Magna\'s Warblade', 'Heroic Broadsword'];
-            break;
-        // Add more cases for other subtypes.
+function showSubtypes(type) {
+    const subtypesContainer = document.getElementById('subtypes-container');
+    subtypesContainer.classList.remove('hidden');
+    let subtypes = [];
+    if (type === 'weapon') {
+        subtypes = ['Staff', 'Daggers', 'Xbox', 'Longbow', 'Wand', 'Greatsword', 'Shield', 'Sword'];
+    } else if (type === 'armor') {
+        subtypes = ['Helmet', 'Chestplate', 'Gauntlets', 'Boots'];
+    } else if (type === 'accessory') {
+        subtypes = ['Ring', 'Belt', 'Necklace'];
     }
-    let itemSelection = document.getElementById('item-selection');
-    itemSelection.innerHTML = '';
-    items.forEach(function(item) {
-        let div = document.createElement('div');
-        div.textContent = item;
-        itemSelection.appendChild(div);
+
+    subtypesContainer.innerHTML = '';
+    subtypes.forEach(subtype => {
+        const btn = document.createElement('button');
+        btn.innerText = subtype;
+        subtypesContainer.appendChild(btn);
     });
 }
 
-// Collapsible functionality for Items Listed
-let collapsibleBtn = document.querySelector('.collapsible-btn');
-let collapsibleContent = document.querySelector('.collapsible-content');
-
-collapsibleBtn.addEventListener('click', function() {
-    collapsibleContent.classList.toggle('active');
+document.getElementById('collapse-items-btn').addEventListener('click', function () {
+    const content = document.getElementById('item-list-content');
+    content.classList.toggle('hidden');
 });
+
+document.getElementById('build-icons').addEventListener('click', function (event) {
+    if (event.target.classList.contains('build-icon')) {
+        event.target.classList.toggle('selected');
+    }
+});
+
+// The rest of the code for managing listing requests and item countdown timers
