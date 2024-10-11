@@ -9,38 +9,42 @@
 </head>
 <body>
     <div class="container">
-        <button id="admin-login-btn">Admin Login</button>
-        <div id="admin-panel" class="hidden">
-            <div class="admin-header">
-                <button id="close-admin-panel">X</button>
-            </div>
-            <div class="admin-left-panel">
-                <button id="weapon-btn" class="admin-btn">Weapon</button>
-                <button id="armor-btn" class="admin-btn">Armor</button>
-                <button id="accessory-btn" class="admin-btn">Accessory</button>
-                <div id="subtypes-container" class="hidden"></div>
-            </div>
-            <div class="admin-middle-panel"></div>
-            <div class="admin-right-panel">
-                <input type="text" id="search-bar" placeholder="Search items...">
-            </div>
-        </div>
-
-        <div id="build-section">
-            <h3>Select your build</h3>
-            <div id="build-icons">
-                <img src="icons/greatsword.png" alt="Greatsword" class="build-icon">
-                <img src="icons/staff.png" alt="Staff" class="build-icon">
-                <!-- Add other weapon icons here -->
-            </div>
-            <button id="submit-build" class="disabled" disabled>Submit Your Build</button>
-        </div>
-
         <div id="items-listed" class="collapsible">
             <button id="collapse-items-btn">Items Listed</button>
             <div id="item-list-content" class="content hidden">
                 <!-- Listed items will appear here -->
             </div>
+        </div>
+
+        <div id="user-input-section">
+            <h3>User Information</h3>
+            <label for="in-game-name">In-Game Name</label>
+            <input type="text" id="in-game-name" placeholder="Enter your in-game name">
+
+            <label for="reputation">Reputation</label>
+            <input type="number" id="reputation" placeholder="Enter your reputation">
+
+            <label for="usage">Usage</label>
+            <select id="usage">
+                <option value="equip">Equip</option>
+                <option value="copy">Copy</option>
+                <option value="trait">Trait</option>
+                <option value="litho">Litho</option>
+            </select>
+            
+            <h3>Select Your Build (Choose 2 Weapons)</h3>
+            <div id="build-icons">
+                <img src="icons/staff.png" alt="Staff" class="build-icon" data-build="Staff">
+                <img src="icons/daggers.png" alt="Daggers" class="build-icon" data-build="Daggers">
+                <img src="icons/xbox.png" alt="Xbox" class="build-icon" data-build="Xbox">
+                <img src="icons/longbow.png" alt="Longbow" class="build-icon" data-build="Longbow">
+                <img src="icons/wand.png" alt="Wand" class="build-icon" data-build="Wand">
+                <img src="icons/greatsword.png" alt="Greatsword" class="build-icon" data-build="Greatsword">
+                <img src="icons/shield.png" alt="Shield" class="build-icon" data-build="Shield">
+                <img src="icons/sword.png" alt="Sword" class="build-icon" data-build="Sword">
+            </div>
+
+            <button id="submit-build" class="disabled" disabled>Submit Your Build</button>
         </div>
     </div>
 </body>
