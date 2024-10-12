@@ -16,10 +16,9 @@
             <h2>Admin Panel</h2>
             <button id="closeAdminPanel" class="close-btn">X</button>
         </div>
-        
+
         <div class="admin-controls">
             <h3>Admin Functionality</h3>
-            <!-- Other admin functionalities will go here -->
             <button id="listItems">List Items</button>
             <button id="viewRequests">View Requests</button>
         </div>
@@ -32,14 +31,14 @@
 
             <!-- Weapon subtypes -->
             <div id="weaponSubtypes" style="display: none;">
-                <button id="staff">Staff</button>
-                <button id="dagger">Dagger</button>
-                <button id="xbox">Xbox</button>
-                <button id="longbow">Longbow</button>
-                <button id="wand">Wand</button>
-                <button id="greatsword">Greatsword</button>
-                <button id="shield">Shield</button>
-                <button id="sword">Sword</button>
+                <button class="subtype" data-type="Staff">Staff</button>
+                <button class="subtype" data-type="Dagger">Dagger</button>
+                <button class="subtype" data-type="Xbox">Xbox</button>
+                <button class="subtype" data-type="Longbow">Longbow</button>
+                <button class="subtype" data-type="Wand">Wand</button>
+                <button class="subtype" data-type="Greatsword">Greatsword</button>
+                <button class="subtype" data-type="Shield">Shield</button>
+                <button class="subtype" data-type="Sword">Sword</button>
             </div>
         </div>
 
@@ -62,7 +61,7 @@
             <button class="build-btn">Shield</button>
             <button class="build-btn">Sword</button>
         </div>
-        
+
         <button id="submitRequest" disabled>Submit Request</button>
 
         <!-- Items Listed Section -->
