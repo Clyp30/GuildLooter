@@ -1,7 +1,7 @@
 // Admin login functionality
 document.getElementById("adminLoginButton").addEventListener("click", function() {
     const password = prompt("Enter the admin password:");
-    if (password === 'admin123') {  // Change 'admin123' to whatever password you want
+    if (password === 'admin123') {  // Change 'admin123' to your desired password
         document.getElementById("adminPanel").style.display = "block";
         document.getElementById("adminLoginButton").style.display = "none";
     } else {
@@ -43,6 +43,29 @@ document.getElementById("weaponBtn").addEventListener("click", function() {
     document.getElementById("weaponSubtypes").style.display = "block";
 });
 
+// Weapon subtype selection
+const subtypes = document.querySelectorAll(".subtype");
+let selectedWeapons = [];
+
+subtypes.forEach(subtype => {
+    subtype.addEventListener("click", function() {
+        if (selectedWeapons.includes(this.dataset.type)) {
+            selectedWeapons = selectedWeapons.filter(weapon => weapon !== this.dataset.type);
+            this.classList.remove("selected");
+        } else {
+            if (selectedWeapons.length < 2) {
+                selectedWeapons.push(this.dataset.type);
+                this.classList.add("selected");
+            } else {
+                alert("Only 2 weapons of choice allowed");
+            }
+        }
+
+        // Enable or disable the submit button based on selection
+        document.getElementById("submitRequest").disabled = selectedWeapons.length !== 2;
+    });
+});
+
 // Build selection logic
 const buildBtns = document.querySelectorAll(".build-btn");
 let selectedBuilds = [];
@@ -51,19 +74,14 @@ buildBtns.forEach(btn => {
     btn.addEventListener("click", function() {
         if (selectedBuilds.includes(this.textContent)) {
             selectedBuilds = selectedBuilds.filter(build => build !== this.textContent);
-            this.style.backgroundColor = "#2f4f4f";
+            this.classList.remove("selected");
         } else {
             if (selectedBuilds.length < 2) {
                 selectedBuilds.push(this.textContent);
-                this.style.backgroundColor = "#556b2f";
+                this.classList.add("selected");
             } else {
                 alert("Only 2 weapons of choice allowed");
             }
         }
     });
-});
-
-// Enable request submission once an item is selected
-document.getElementById("itemsContent").addEventListener("click", function() {
-    document.getElementById("submitRequest").disabled = false;
 });
