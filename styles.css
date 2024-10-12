@@ -48,7 +48,7 @@ button:hover {
     color: #fff;
 }
 
-.build-btn:hover {
+.build-btn.selected {
     background-color: #556b2f;
 }
 
@@ -71,33 +71,46 @@ button:hover {
 
 /* Diablo 2 inspired theming */
 body {
-    background: #2c2c2c url('diablo2_bg_texture.png') no-repeat center center fixed;
-    background-size: cover;
+    background: #2c2c2c; /* Dark background */
 }
 
 h2, h3 {
     font-family: 'Diablo', serif; /* Custom Diablo font if available */
-    color: #ffcc00;
+    color: #ffcc00; /* Golden color */
 }
 
 button {
     background: #4c1a00;
     color: #ffcc00;
-    font-family: 'Diablo', serif;
+    font-family: 'Diablo', serif; /* Consistent font */
 }
 
 button:hover {
     background: #663300;
 }
 
-#submitRequest:disabled {
-    background-color: #444;
-    cursor: not-allowed;
-}
-
 /* Adjustments for build icons */
 .build-btn {
-    font-size: 0.8rem;
-    padding: 5px;
-    width: 80px;
+    font-size: 0.8rem; /* Smaller font */
+    padding: 5px; /* Smaller padding */
+    width: 80px; /* Fixed width */
+}
+
+/* Item list styles */
+#itemsContent {
+    max-height: 300px; /* Limit height */
+    overflow-y: auto; /* Scroll if necessary */
+}
+
+.item {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+}
+
+.item:nth-child(even) {
+    background-color: #2e2e2e; /* Alternate background */
+}
+
+.item:hover {
+    background-color: #555; /* Highlight on hover */
 }
