@@ -1,133 +1,66 @@
 body {
-    background-color: #1c1c1c;
-    color: darkgoldenrod;
+    background-color: #1a1a1a;
+    color: #d4af37;
     font-family: 'Diablo', sans-serif;
 }
 
-.admin-panel {
-    position: fixed;
-    width: 90%;
-    height: 80%;
-    background-color: #2a2a2a;
-    border: 2px solid red;
-    top: 10%;
-    left: 5%;
-    display: none;
+.container {
+    display: flex;
     flex-direction: column;
-}
-
-.admin-header {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #202020;
-    border-bottom: 1px solid red;
 }
 
-.search-bar {
-    background-color: #404040;
-    border: none;
-    color: white;
-    padding: 5px;
+#admin-login-panel, #user-panel, #items-list {
+    margin-bottom: 20px;
+    width: 80%;
 }
 
-.admin-close {
-    background: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
+h2, h3 {
+    text-align: center;
 }
 
-.panel-body {
+#build-icons {
     display: flex;
-    flex-direction: row;
-    padding: 20px;
-}
-
-.user-section input,
-.user-section select {
-    margin-bottom: 10px;
-}
-
-.build-icons {
-    display: flex;
-    gap: 10px;
+    justify-content: space-around;
 }
 
 .build-icon {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    border: 2px solid transparent;
-}
-
-.build-icon:hover, .build-icon.selected {
-    border: 2px solid darkred;
-}
-
-#items-listed-title {
-    background-color: #8B0000;
-    padding: 10px;
-    text-align: center;
-    font-size: 18px;
-    color: white;
-}
-
-.items-list {
-    padding: 10px;
-    border: 1px solid gold;
-    overflow-y: auto;
-    max-height: 200px;
-}
-
-.items-list .item {
-    padding: 5px;
-    background-color: #333;
-}
-
-.items-list .item:nth-child(even) {
-    background-color: #444;
-}
-
-.items-list .item:hover {
-    background-color: darkred;
-    color: white;
-}
-
-button {
+    width: 40px;
+    height: 40px;
     cursor: pointer;
 }
 
-#admin-login {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 10px 20px;
+#items-container {
+    border: 2px solid #d4af37;
+    padding: 10px;
 }
 
-/* Requests List */
-.requests-list {
-    padding: 10px;
-    border: 1px solid red;
-    background-color: #2a2a2a;
+#items-list-admin, #requests-list {
     margin-top: 20px;
 }
 
-.requests-list .request {
-    padding: 10px;
-    border-bottom: 1px solid darkred;
-}
-
-.requests-list .request:last-child {
-    border-bottom: none;
-}
-
-.requests-list .request:hover {
-    background-color: darkred;
+button {
+    background-color: #8b0000;
     color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: grey;
+}
+
+#admin-login-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+#items-list h2 {
+    color: #ff4500;
 }
