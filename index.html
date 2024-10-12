@@ -3,60 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guild Loot Distribution</title>
+    <title>Loot Distribution</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="admin-panel">
-        <div class="admin-header">
-            <button class="admin-close" id="close-admin">X</button>
-            <input type="text" id="searchItems" placeholder="Search items" class="search-bar">
-        </div>
-        <div class="panel-body">
-            <div class="user-section">
-                <div>
-                    <input type="text" id="ingame-name" placeholder="In-game name">
-                    <input type="number" id="reputation" placeholder="Reputation">
-                </div>
-                <div>
-                    <label for="usage">Usage:</label>
-                    <select id="usage">
-                        <option value="equip">Equip</option>
-                        <option value="copy">Copy</option>
-                        <option value="trait">Trait</option>
-                        <option value="litho">Litho</option>
-                    </select>
-                </div>
-                <div id="build-selection">
-                    <label for="build">Select Build:</label>
-                    <div class="build-icons">
-                        <img src="staff.png" id="staff" class="build-icon" alt="Staff">
-                        <img src="dagger.png" id="dagger" class="build-icon" alt="Dagger">
-                        <img src="xbox.png" id="xbox" class="build-icon" alt="Xbox">
-                        <img src="longbow.png" id="longbow" class="build-icon" alt="Longbow">
-                        <img src="wand.png" id="wand" class="build-icon" alt="Wand">
-                        <img src="greatsword.png" id="greatsword" class="build-icon" alt="Greatsword">
-                        <img src="shield.png" id="shield" class="build-icon" alt="Shield">
-                        <img src="sword.png" id="sword" class="build-icon" alt="Sword">
-                    </div>
-                </div>
-            </div>
-            <div class="items-listed">
-                <h2 id="items-listed-title">Items Listed</h2>
-                <div id="items-content" class="items-list">
-                    <!-- Listed items will be dynamically added here -->
-                </div>
+    <div class="container">
+        <div id="admin-login-panel">
+            <button id="admin-login">Admin Login</button>
+            <div id="admin-login-form" style="display: none;">
+                <input type="password" id="admin-password" placeholder="Enter Password">
+                <button id="submit-password">Submit</button>
             </div>
         </div>
-        <div class="admin-panel-requests">
-            <h2>All Requests</h2>
-            <div id="requests-content" class="requests-list">
-                <!-- Requests will be dynamically added here -->
+
+        <div id="user-panel">
+            <h3>Ingame Name</h3>
+            <input type="text" id="ingame-name" placeholder="Enter your in-game name">
+            <h3>Reputation</h3>
+            <input type="text" id="reputation" placeholder="Enter your reputation">
+            
+            <h3>Usage</h3>
+            <select id="usage">
+                <option value="equip">Equip</option>
+                <option value="copy">Copy</option>
+                <option value="trait">Trait</option>
+                <option value="litho">Litho</option>
+            </select>
+
+            <h3>Build</h3>
+            <div id="build-icons">
+                <img src="staff.png" id="staff" class="build-icon">
+                <img src="dagger.png" id="dagger" class="build-icon">
+                <img src="xbox.png" id="xbox" class="build-icon">
+                <img src="longbow.png" id="longbow" class="build-icon">
+                <img src="wand.png" id="wand" class="build-icon">
+                <img src="greatsword.png" id="greatsword" class="build-icon">
+                <img src="shield.png" id="shield" class="build-icon">
+                <img src="sword.png" id="sword" class="build-icon">
             </div>
+
+            <h3>Rarity Selection</h3>
+            <select id="rarity">
+                <option value="rare">Rare</option>
+                <option value="epic">Epic</option>
+            </select>
+
+            <button id="submit-request" disabled>Submit Request</button>
+        </div>
+
+        <div id="items-list">
+            <h2>Items Listed</h2>
+            <div id="items-container"></div>
         </div>
     </div>
 
-    <button id="admin-login">Admin Login</button>
+    <!-- Admin Panel -->
+    <div id="admin-panel" style="display: none;">
+        <h2>Admin Panel</h2>
+        <button id="logout-admin">Logout</button>
+        <div id="items-listed-admin">
+            <h3>Listed Items</h3>
+            <div id="items-list-admin"></div>
+        </div>
+        <div id="admin-requests">
+            <h3>Pending Requests</h3>
+            <div id="requests-list"></div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
