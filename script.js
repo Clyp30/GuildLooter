@@ -3,6 +3,8 @@ const adminLoginButton = document.getElementById('admin-login');
 const adminLoginForm = document.getElementById('admin-login-form');
 const submitPasswordButton = document.getElementById('submit-password');
 const adminPanel = document.getElementById('admin-panel');
+const userPanel = document.getElementById('user-panel');
+const itemsList = document.getElementById('items-list');
 const adminPasswordInput = document.getElementById('admin-password');
 const adminLogoutButton = document.getElementById('logout-admin');
 
@@ -18,6 +20,8 @@ submitPasswordButton.addEventListener('click', () => {
         isAdmin = true;
         adminLoginForm.style.display = 'none';
         adminPanel.style.display = 'block';
+        userPanel.style.display = 'none';
+        itemsList.style.display = 'none';
     } else {
         alert('Incorrect password');
     }
@@ -26,6 +30,8 @@ submitPasswordButton.addEventListener('click', () => {
 adminLogoutButton.addEventListener('click', () => {
     isAdmin = false;
     adminPanel.style.display = 'none';
+    userPanel.style.display = 'block';
+    itemsList.style.display = 'block';
 });
 
 // Handle Build Selection
