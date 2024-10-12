@@ -4,74 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loot Distribution</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Admin Login Section -->
-        <div id="admin-login-panel">
-            <button id="admin-login">Admin Login</button>
-            <div id="admin-login-form" style="display: none;">
-                <input type="password" id="admin-password" placeholder="Enter Password">
-                <button id="submit-password">Submit</button>
+    <!-- Admin Login -->
+    <button id="adminLoginButton">Admin Login</button>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" style="display: none;">
+        <div class="admin-panel-header">
+            <h2>Admin Panel</h2>
+            <button id="closeAdminPanel" class="close-btn">X</button>
+        </div>
+        
+        <div class="admin-controls">
+            <h3>Admin Functionality</h3>
+            <!-- Other admin functionalities will go here -->
+            <button id="listItems">List Items</button>
+            <button id="viewRequests">View Requests</button>
+        </div>
+
+        <div id="listItemsSection" style="display: none;">
+            <h3>List New Item</h3>
+            <button id="weaponBtn">Weapon</button>
+            <button id="armorBtn">Armor</button>
+            <button id="accessoryBtn">Accessory</button>
+
+            <!-- Weapon subtypes -->
+            <div id="weaponSubtypes" style="display: none;">
+                <button id="staff">Staff</button>
+                <button id="dagger">Dagger</button>
+                <button id="xbox">Xbox</button>
+                <button id="longbow">Longbow</button>
+                <button id="wand">Wand</button>
+                <button id="greatsword">Greatsword</button>
+                <button id="shield">Shield</button>
+                <button id="sword">Sword</button>
             </div>
         </div>
 
-        <!-- User Panel Section -->
-        <div id="user-panel">
-            <h3>Ingame Name</h3>
-            <input type="text" id="ingame-name" placeholder="Enter your in-game name">
-            
-            <h3>Reputation</h3>
-            <input type="text" id="reputation" placeholder="Enter your reputation">
-            
-            <h3>Usage</h3>
-            <select id="usage">
-                <option value="equip">Equip</option>
-                <option value="copy">Copy</option>
-                <option value="trait">Trait</option>
-                <option value="litho">Litho</option>
-            </select>
-
-            <h3>Build</h3>
-            <div id="build-icons">
-                <img src="staff.png" id="staff" class="build-icon">
-                <img src="dagger.png" id="dagger" class="build-icon">
-                <img src="xbox.png" id="xbox" class="build-icon">
-                <img src="longbow.png" id="longbow" class="build-icon">
-                <img src="wand.png" id="wand" class="build-icon">
-                <img src="greatsword.png" id="greatsword" class="build-icon">
-                <img src="shield.png" id="shield" class="build-icon">
-                <img src="sword.png" id="sword" class="build-icon">
-            </div>
-
-            <h3>Rarity Selection</h3>
-            <select id="rarity">
-                <option value="rare">Rare</option>
-                <option value="epic">Epic</option>
-            </select>
-
-            <button id="submit-request" disabled>Submit Request</button>
-        </div>
-
-        <!-- Items Listed Section -->
-        <div id="items-list">
-            <h2>Items Listed</h2>
-            <div id="items-container"></div>
+        <div id="viewRequestsSection" style="display: none;">
+            <h3>Current Requests</h3>
+            <!-- Requests listing and actions (accept/deny) go here -->
         </div>
     </div>
 
-    <!-- Admin Panel Section (Hidden initially) -->
-    <div id="admin-panel" style="display: none;">
-        <h2>Admin Panel</h2>
-        <button id="logout-admin">Logout</button>
-        <div id="items-listed-admin">
-            <h3>Listed Items</h3>
-            <div id="items-list-admin"></div>
+    <!-- User Section -->
+    <div class="user-section">
+        <h2>Select Your Build</h2>
+        <div class="build-icons">
+            <button class="build-btn">Staff</button>
+            <button class="build-btn">Dagger</button>
+            <button class="build-btn">Xbox</button>
+            <button class="build-btn">Longbow</button>
+            <button class="build-btn">Wand</button>
+            <button class="build-btn">Greatsword</button>
+            <button class="build-btn">Shield</button>
+            <button class="build-btn">Sword</button>
         </div>
-        <div id="admin-requests">
-            <h3>Pending Requests</h3>
-            <div id="requests-list"></div>
+        
+        <button id="submitRequest" disabled>Submit Request</button>
+
+        <!-- Items Listed Section -->
+        <h3>Items Listed</h3>
+        <div id="itemsListed" class="collapsible">Items Listed</div>
+        <div id="itemsContent" class="content">
+            <!-- Listed items will show here -->
         </div>
     </div>
 
