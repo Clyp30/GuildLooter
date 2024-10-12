@@ -1,66 +1,103 @@
+/* Basic styles for layout */
 body {
-    background-color: #1a1a1a;
-    color: #d4af37;
-    font-family: 'Diablo', sans-serif;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#admin-login-panel, #user-panel, #items-list {
-    margin-bottom: 20px;
-    width: 80%;
-}
-
-h2, h3 {
-    text-align: center;
-}
-
-#build-icons {
-    display: flex;
-    justify-content: space-around;
-}
-
-.build-icon {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-}
-
-#items-container {
-    border: 2px solid #d4af37;
-    padding: 10px;
-}
-
-#items-list-admin, #requests-list {
-    margin-top: 20px;
+    background-color: #1b1b1b;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
 }
 
 button {
-    background-color: #8b0000;
+    padding: 10px;
+    margin: 5px;
+    background-color: #b22222;
     color: white;
-    padding: 10px 20px;
+    border: none;
     cursor: pointer;
+    font-size: 1rem;
 }
 
-button:disabled {
-    background-color: grey;
+button:hover {
+    background-color: #8b0000;
 }
 
-#admin-login-form {
+.admin-panel-header {
     display: flex;
     justify-content: space-between;
 }
 
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+.close-btn {
+    background-color: #b22222;
+    padding: 5px 10px;
+    font-size: 1.2rem;
 }
 
-#items-list h2 {
-    color: #ff4500;
+.user-section {
+    margin-top: 20px;
+}
+
+.build-icons {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.build-btn {
+    padding: 10px;
+    margin: 2px;
+    background-color: #2f4f4f;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.build-btn:hover {
+    background-color: #556b2f;
+}
+
+.collapsible {
+    background-color: #8b0000;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.content {
+    display: none;
+    padding: 10px;
+    background-color: #333;
+}
+
+#itemsListed.active + .content {
+    display: block;
+}
+
+/* Diablo 2 inspired theming */
+body {
+    background: #2c2c2c url('diablo2_bg_texture.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+h2, h3 {
+    font-family: 'Diablo', serif; /* Custom Diablo font if available */
+    color: #ffcc00;
+}
+
+button {
+    background: #4c1a00;
+    color: #ffcc00;
+    font-family: 'Diablo', serif;
+}
+
+button:hover {
+    background: #663300;
+}
+
+#submitRequest:disabled {
+    background-color: #444;
+    cursor: not-allowed;
+}
+
+/* Adjustments for build icons */
+.build-btn {
+    font-size: 0.8rem;
+    padding: 5px;
+    width: 80px;
 }
